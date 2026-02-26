@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard – Football Magazine</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; font-family: 'Inter', sans-serif; color: #fff; min-height: 100vh; }
+  header {
+    background: #111;
+    border-bottom: 1px solid #1e1e1e;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #00e676; letter-spacing: 3px; }
+  .nav-links { display: flex; gap: 16px; align-items: center; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .btn-new {
+    background: #00e676;
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-new:hover { background: #00c853; }
+  main { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 3px; margin-bottom: 8px; }
+  .stats { color: #555; font-size: 14px; margin-bottom: 40px; }
+  .empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: #333;
+  }
+  .empty-icon { font-size: 64px; margin-bottom: 16px; }
+  .empty h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 2px; color: #444; margin-bottom: 8px; }
+  .empty p { font-size: 14px; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .card {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: #333; transform: translateY(-2px); }
+  .card-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .team-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .match-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 1px; flex: 1; }
+  .card-body { padding: 16px 20px; }
+  .meta { font-size: 13px; color: #666; margin-bottom: 4px; }
+  .card-footer { padding: 16px 20px; border-top: 1px solid #1a1a1a; display: flex; gap: 10px; }
+  .btn-sm {
+    flex: 1;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-view { background: #1a1a1a; color: #fff; }
+  .btn-view:hover { background: #252525; }
+  .btn-edit { background: #1a2a1a; color: #00e676; }
+  .btn-edit:hover { background: #1e341e; }
+  .btn-del { background: #2a1a1a; color: #ef5350; }
+  .btn-del:hover { background: #341e1e; }
+  .competition-badge {
+    display: inline-block;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: #888;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">⚽ MATCHMAG</div>
+  <div class="nav-links">
+    <a href="/admin/logout">Ieși din cont</a>
+    <a href="/admin/new" class="btn-new">+ REVISTĂ NOUĂ</a>
+  </div>
+</header>
+<main>
+  <h1>REVISTE MECI</h1>
+  <p class="stats"><%= magazines.length %> revistă(e) creată(e)</p>
+
+  <% if (magazines.length === 0) { %>
+  <div class="empty">
+    <div class="empty-icon">📋</div>
+    <h2>NICIO REVISTĂ ÎNCĂ</h2>
+    <p>Creează prima ta revistă de meci digital</p>
+    <a href="/admin/new" class="btn-new">+ CREEAZĂ PRIMA REVISTĂ</a>
+  </div>
+  <% } else { %>
+  <div class="grid">
+    <% magazines.slice().reverse().forEach(mag => { %>
+    <div class="card">
+      <div class="card-header">
+        <div class="team-dot" style="background:<%= mag.homeColor %>"></div>
+        <div class="match-title"><%= mag.homeTeam %> vs <%= mag.awayTeam %></div>
+        <div class="team-dot" style="background:<%= mag.awayColor %>"></div>
+      </div>
+      <div class="card-body">
+        <div class="meta">📅 <%= mag.matchDate %></div>
+        <div class="meta">🏟️ <%= mag.stadium %></div>
+        <div class="competition-badge"><%= mag.competition %></div>
+      </div>
+      <div class="card-footer">
+        <a href="/admin/magazine/<%= mag.id %>" class="btn-sm btn-view">👁 Vezi</a>
+        <a href="/admin/edit/<%= mag.id %>" class="btn-sm btn-edit">✏️ Editează</a>
+        <form method="POST" action="/admin/delete/<%= mag.id %>" style="flex:1" onsubmit="return confirm('Ștergi această revistă?')">
+          <button type="submit" class="btn-sm btn-del" style="width:100%">🗑 Șterge</button>
+        </form>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% } %>
+</main>
+</body>
+</html>

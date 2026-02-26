@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title><%= mag.homeTeam %> vs <%= mag.awayTeam %> – Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; font-family: 'Inter', sans-serif; color: #fff; }
+  header {
+    background: #111;
+    border-bottom: 1px solid #1e1e1e;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #00e676; letter-spacing: 3px; }
+  .back { color: #888; text-decoration: none; font-size: 14px; }
+  .back:hover { color: #fff; }
+  main { max-width: 700px; margin: 0 auto; padding: 48px 24px; }
+  .match-title { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 3px; margin-bottom: 4px; }
+  .competition { color: #555; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+
+  .qr-card {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .qr-card img { width: 200px; height: 200px; border-radius: 8px; background: #fff; padding: 8px; margin-bottom: 20px; }
+  .qr-label { color: #888; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .match-url {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #00e676;
+    font-size: 13px;
+    word-break: break-all;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+  }
+  .btn-green { background: #00e676; color: #000; }
+  .btn-green:hover { background: #00c853; }
+  .btn-dark { background: #1a1a1a; color: #fff; border: 1px solid #2a2a2a; }
+  .btn-dark:hover { background: #252525; }
+  .btn-blue { background: #1565c0; color: #fff; }
+  .btn-blue:hover { background: #1976d2; }
+
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  .info-card {
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .info-label { color: #555; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+  .info-value { font-size: 16px; font-weight: 600; }
+  .team-colors { display: flex; gap: 8px; margin-top: 8px; }
+  .color-chip { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .actions { display: flex; gap: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">⚽ MATCHMAG</div>
+  <a href="/admin" class="back">← Dashboard</a>
+</header>
+<main>
+  <div class="match-title"><%= mag.homeTeam %> vs <%= mag.awayTeam %></div>
+  <div class="competition">📅 <%= mag.matchDate %> · <%= mag.competition %> · 🏟️ <%= mag.stadium %></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label">Culori Echipe</div>
+      <div class="team-colors">
+        <div class="color-chip" style="background:<%= mag.homeColor %>"><%= mag.homeTeam.substring(0,2).toUpperCase() %></div>
+        <div style="display:flex;align-items:center;color:#555">vs</div>
+        <div class="color-chip" style="background:<%= mag.awayColor %>"><%= mag.awayTeam.substring(0,2).toUpperCase() %></div>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Status</div>
+      <div class="info-value" style="color:#00e676">✅ Publicată</div>
+      <div style="color:#555;font-size:12px;margin-top:4px">Accesibilă prin QR</div>
+    </div>
+  </div>
+
+  <div class="qr-card">
+    <div class="qr-label">Scanează pentru a citi revista</div>
+    <img src="<%= mag.qrCode %>" alt="QR Code" id="qrImg">
+    <div class="match-url"><%= mag.matchUrl %></div>
+    <div class="btn-group">
+      <a href="<%= mag.matchUrl %>" target="_blank" class="btn btn-green">👁 Previzualizează Revista</a>
+      <button onclick="downloadQR()" class="btn btn-dark">⬇️ Descarcă QR Code</button>
+      <button onclick="copyUrl()" class="btn btn-blue">📋 Copiază Link</button>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a href="/admin/edit/<%= mag.id %>" class="btn btn-dark" style="flex:1;justify-content:center">✏️ Editează Revista</a>
+    <form method="POST" action="/admin/delete/<%= mag.id %>" onsubmit="return confirm('Ești sigur că vrei să ștergi această revistă?')">
+      <button type="submit" class="btn" style="background:#2a1a1a;color:#ef5350;border:1px solid #3a2020">🗑 Șterge</button>
+    </form>
+  </div>
+</main>
+
+<script>
+function downloadQR() {
+  const img = document.getElementById('qrImg');
+  const a = document.createElement('a');
+  a.href = img.src;
+  a.download = 'qr-<%= mag.homeTeam.replace(/\s/g,"_") %>-vs-<%= mag.awayTeam.replace(/\s/g,"_") %>.png';
+  a.click();
+}
+function copyUrl() {
+  navigator.clipboard.writeText('<%= mag.matchUrl %>').then(() => {
+    alert('Link copiat! ✅');
+  });
+}
+</script>
+</body>
+</html>
