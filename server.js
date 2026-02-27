@@ -148,6 +148,11 @@ app.post('/admin/reset-votes/:id', requireAuth, (req, res) => {
   res.redirect(`/admin/magazine/${req.params.id}`);
 });
 
+// Default page colors
+const PAGE_DEFAULTS = {
+  bg: '#0d0d0d', fg: '#ffffff'
+};
+
 function buildMag(id, matchUrl, qrCode, req) {
   const b = req.body;
   const files = req.files || {};
@@ -157,6 +162,12 @@ function buildMag(id, matchUrl, qrCode, req) {
     homeNames.push((b[`homeName_${i}`]||'').toString());
     awayNums.push((b[`awayNumber_${i}`]||'').toString());
     awayNames.push((b[`awayName_${i}`]||'').toString());
+  }
+  // Per-page colors (16 pages)
+  const pageBg = [], pageFg = [];
+  for (let i=1;i<=16;i++) {
+    pageBg.push(b[`pageBg_${i}`] || PAGE_DEFAULTS.bg);
+    pageFg.push(b[`pageFg_${i}`] || PAGE_DEFAULTS.fg);
   }
   const h2hLabels = Array.isArray(b.h2hLabel)?b.h2hLabel:(b.h2hLabel?[b.h2hLabel]:[]);
   const h2hValues = Array.isArray(b.h2hValue)?b.h2hValue:(b.h2hValue?[b.h2hValue]:[]);
@@ -170,8 +181,7 @@ function buildMag(id, matchUrl, qrCode, req) {
     awayColor1:b.awayColor1||'#457b9d',
     awayColor2:b.useAwayColor2?b.awayColor2||'#ffffff':null,
     awayColor3:b.useAwayColor3?b.awayColor3||'#1d3557':null,
-    bgColor:b.bgColor||'#0d0d0d',
-    bgTextColor:b.bgTextColor||'#ffffff',
+    pageBg, pageFg,
     matchDate:b.matchDate||'', stadium:b.stadium||'', competition:b.competition||'',
     cover: files.cover?`/uploads/${files.cover[0].filename}`:null,
     clubLogo: files.clubLogo?`/uploads/${files.clubLogo[0].filename}`:null,
@@ -185,18 +195,30 @@ function buildMag(id, matchUrl, qrCode, req) {
     homeCoachPhoto: files.homeCoachPhoto?`/uploads/${files.homeCoachPhoto[0].filename}`:null,
     awayCoachPhoto: files.awayCoachPhoto?`/uploads/${files.awayCoachPhoto[0].filename}`:null,
     coverTitle:b.coverTitle||'',
-    tocItems:tocItems,
+    tocItems,
     avancronicaTitle:b.avancronicaTitle||'Avancronica',
     avancronicaP1:b.avancronicaP1||'', avancronicaP2:b.avancronicaP2||'',
     playerTitle:b.playerTitle||'', playerSubtitle:b.playerSubtitle||'', playerText:b.playerText||'',
     standingsTitle:b.standingsTitle||'Clasament',
     standingsEmbed:b.standingsEmbed||'',
+    // Formation colors
+    homeShirtColor:b.homeShirtColor||'#e63946',
+    homeCollarColor:b.homeCollarColor||'#1d3557',
+    homeNumColor:b.homeNumColor||'#ffffff',
+    homeNameColor:b.homeNameColor||'#111111',
+    awayShirtColor:b.awayShirtColor||'#457b9d',
+    awayCollarColor:b.awayCollarColor||'#ffffff',
+    awayNumColor:b.awayNumColor||'#ffffff',
+    awayNameColor:b.awayNameColor||'#111111',
+    formationTitle:b.formationTitle||'Formații probabile',
     homeFormation:b.homeFormation||'4-3-3', homeFormationTitle:b.homeFormationTitle||'',
+    homeCoachFormation:b.homeCoachFormation||'',
     homePlayerNumbers:homeNums, homePlayerNames:homeNames,
     awayFormation:b.awayFormation||'4-3-3', awayFormationTitle:b.awayFormationTitle||'',
+    awayCoachFormation:b.awayCoachFormation||'',
     awayPlayerNumbers:awayNums, awayPlayerNames:awayNames,
     homeReserves:b.homeReserves||'', awayReserves:b.awayReserves||'',
-    h2hTitle:b.h2hTitle||'Întâlniri directe', h2hLabels:h2hLabels, h2hValues:h2hValues,
+    h2hTitle:b.h2hTitle||'Întâlniri directe', h2hLabels, h2hValues,
     h2hYoutubeEmbed:b.h2hYoutubeEmbed||'',
     coachesTitle:b.coachesTitle||'Ce spun antrenorii',
     homeCoachName:b.homeCoachName||'', homeCoachText:b.homeCoachText||'',
