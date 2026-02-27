@@ -13,35 +13,29 @@
   --a1:<%=mag.awayColor1%>;
   --a2:<%=mag.awayColor2||mag.awayColor1%>;
   --a3:<%=mag.awayColor3||mag.awayColor1%>;
-  --bg:<%=mag.bgColor||'#0d0d0d'%>;
-  --fg:<%=mag.bgTextColor||'#ffffff'%>;
-  --card:<%=mag.bgColor==='#ffffff'||mag.bgColor==='#fff'?'#f0f0f0':'#141414'%>;
-  --border:<%=mag.bgColor==='#ffffff'||mag.bgColor==='#fff'?'#ddd':'#1e1e1e'%>;
-  --muted:<%=mag.bgColor==='#ffffff'||mag.bgColor==='#fff'?'#666':'#666'%>;
-  --text-on-bg:<%=mag.bgTextColor||'#ffffff'%>;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:'Source Sans 3',sans-serif;touch-action:none;color:var(--fg)}
+html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:'Source Sans 3',sans-serif;touch-action:none}
 .magazine{width:100%;height:100vh;display:flex;will-change:transform}
-.page{min-width:100vw;width:100vw;height:100vh;overflow-y:auto;overflow-x:hidden;position:relative;scrollbar-width:none;-webkit-overflow-scrolling:touch;background:var(--bg)}
+.page{min-width:100vw;width:100vw;height:100vh;overflow-y:auto;overflow-x:hidden;position:relative;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .page::-webkit-scrollbar{display:none}
 
-/* CLUB LOGO BUTTON (replaces home btn) */
-.club-logo-btn{position:absolute;top:8px;left:10px;z-index:50;cursor:pointer;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.12);padding:4px 10px 4px 5px;border-radius:20px;backdrop-filter:blur(6px);transition:background 0.2s}
+/* CLUB LOGO BTN */
+.club-logo-btn{position:absolute;top:8px;left:10px;z-index:50;cursor:pointer;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);padding:4px 10px 4px 5px;border-radius:20px;backdrop-filter:blur(6px);transition:background 0.2s}
 .club-logo-btn:hover{background:rgba(255,255,255,0.15)}
 .club-logo-img{width:28px;height:28px;object-fit:contain;border-radius:50%}
 .club-logo-ph{width:28px;height:28px;border-radius:50%;background:var(--h1);display:flex;align-items:center;justify-content:center;font-size:13px}
 .club-logo-label{font-size:10px;color:rgba(255,255,255,0.8);letter-spacing:1px;font-weight:600}
 
-/* NAV */
-.nav-dots{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:100;background:rgba(0,0,0,0.5);padding:4px 9px;border-radius:18px;backdrop-filter:blur(8px)}
+/* NAV DOTS + ARROWS at bottom */
+.nav-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;z-index:100;background:rgba(0,0,0,0.55);padding:5px 10px;border-radius:22px;backdrop-filter:blur(8px)}
+.nav-arrow{width:26px;height:26px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;user-select:none;flex-shrink:0}
+.nav-arrow:hover{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.5)}
+.nav-arrow.hidden{opacity:0;pointer-events:none}
+.nav-dots{display:flex;gap:4px;align-items:center}
 .dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.3s;cursor:pointer}
 .dot.active{background:#fff;width:14px;border-radius:3px}
-.arrow{position:fixed;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:17px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);user-select:none;transition:background 0.2s}
-.arrow:hover{background:rgba(255,255,255,0.15)}
-.arrow-left{left:4px}.arrow-right{right:4px}
-.arrow.hidden{opacity:0;pointer-events:none}
-.page-num{position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:1px;padding:3px 8px;border-radius:8px;z-index:100;backdrop-filter:blur(4px)}
+.page-num{position:fixed;top:10px;right:10px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:1px;padding:3px 8px;border-radius:8px;z-index:100;backdrop-filter:blur(4px)}
 
 /* COVER */
 .cover-page{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:100vh;background:#111}
@@ -55,168 +49,187 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-famil
 .cover-club-logo.size-small{width:50px;height:50px}
 .cover-club-logo.size-medium{width:80px;height:80px}
 .cover-club-logo.size-large{width:110px;height:110px}
-.cover-content{position:relative;z-index:2;padding:20px 20px 72px}
+.cover-content{position:relative;z-index:2;padding:20px 20px 80px}
 .cover-comp{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:16px;margin-bottom:10px}
 .cover-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,8vw,42px);letter-spacing:3px;line-height:1.1;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.9);margin-bottom:6px}
 .cover-meta{color:rgba(255,255,255,0.4);font-size:12px}
 .color-bar{height:4px;background:linear-gradient(to right,var(--h1) 50%,var(--a1) 50%)}
 
-/* TOC */
-.toc-page{padding:10px 0 70px;min-height:100vh}
-.toc-header{padding:44px 18px 10px}
-.toc-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--fg)}
-.toc-subtitle{color:var(--muted);font-size:10px;letter-spacing:1px;margin-top:1px}
-.toc-list{padding:0 10px}
-.toc-item{display:flex;align-items:center;padding:0;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;border-radius:6px;margin-bottom:2px;overflow:hidden}
-.toc-item:hover,.toc-item:active{background:var(--card)}
-.toc-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:rgba(128,128,128,0.3);width:40px;text-align:center;padding:8px 0;flex-shrink:0}
-.toc-text{flex:1;font-size:13px;color:var(--fg);opacity:0.7;padding:8px 8px;font-weight:600}
-.toc-arrow{color:var(--muted);font-size:14px;padding-right:12px;flex-shrink:0}
-.toc-item.current .toc-num{color:var(--h1)}
-.toc-item.current .toc-text{opacity:1}
-.toc-item.current{background:var(--card)}
-
 /* GENERIC PAGE */
-.pg{padding:44px 18px 70px}
-.pg-label{color:var(--muted);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
-.pg-subtitle{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--fg);border-left:4px solid var(--h1);padding-left:10px;margin-bottom:14px}
-.pg-body{font-size:15px;line-height:1.85;color:var(--fg);opacity:0.85;white-space:pre-wrap}
+.pg{padding:44px 18px 80px}
+.pg-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;opacity:0.5}
+.pg-subtitle{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-left:4px solid var(--h1);padding-left:10px;margin-bottom:14px}
+.pg-body{font-size:15px;line-height:1.85;opacity:0.9;white-space:pre-wrap}
+
+/* TOC */
+.toc-page{padding:10px 0 80px;min-height:100vh}
+.toc-header{padding:44px 18px 10px}
+.toc-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px}
+.toc-subtitle{font-size:10px;letter-spacing:1px;margin-top:1px;opacity:0.5}
+.toc-list{padding:0 10px}
+.toc-item{display:flex;align-items:center;border-bottom:1px solid rgba(128,128,128,0.15);cursor:pointer;transition:background 0.15s;border-radius:6px;margin-bottom:2px;overflow:hidden}
+.toc-item:hover,.toc-item:active{background:rgba(128,128,128,0.1)}
+.toc-num{font-family:'Bebas Neue',sans-serif;font-size:20px;width:40px;text-align:center;padding:8px 0;flex-shrink:0;opacity:0.3}
+.toc-text{flex:1;font-size:13px;padding:8px;font-weight:600;opacity:0.8}
+.toc-arrow{font-size:14px;padding-right:12px;flex-shrink:0;opacity:0.3}
+.toc-item.current .toc-num{color:var(--h1);opacity:1}
+.toc-item.current .toc-text{opacity:1}
+.toc-item.current{background:rgba(128,128,128,0.08)}
 
 /* PLAYER */
 .player-area{display:flex;gap:12px;padding:44px 16px 12px;align-items:flex-start}
 .player-photo{width:100px;height:134px;object-fit:cover;object-position:top;border-radius:8px;flex-shrink:0;border:2px solid var(--h1)}
 .player-photo-ph{width:100px;height:134px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,var(--h1)33,var(--h3)33);border:2px solid var(--h1);display:flex;align-items:center;justify-content:center;font-size:32px}
 .player-info{flex:1;padding-top:4px}
-.player-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--fg);line-height:1;margin-bottom:8px}
-.player-sub{display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.5px;color:#fff;background:linear-gradient(135deg,var(--h1),var(--h3));padding:4px 11px;border-radius:5px;box-shadow:0 3px 10px rgba(0,0,0,0.4);text-shadow:0 1px 2px rgba(0,0,0,0.4);line-height:1.4}
-.divider{height:1px;background:var(--border);margin:0 16px}
+.player-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;line-height:1;margin-bottom:8px}
+.player-sub{display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.5px;color:#fff;background:linear-gradient(135deg,var(--h1),var(--h3));padding:4px 11px;border-radius:5px;box-shadow:0 3px 10px rgba(0,0,0,0.4);line-height:1.4}
+.divider-line{height:1px;background:rgba(128,128,128,0.2);margin:0 16px}
 
 /* STANDINGS */
-.standings-page{padding:44px 0 70px}
-.standings-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--fg);margin-bottom:12px;padding:0 16px}
-.standings-wrap{width:100%;overflow:hidden;border-radius:8px;background:#fff}
+.standings-page{padding:44px 0 80px}
+.standings-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:12px;padding:0 16px}
+.standings-wrap{width:100%;overflow:hidden;background:#fff}
 .standings-wrap iframe{display:block;width:100%;border:none;margin-top:-120px}
-.standings-ph{background:var(--card);border:1px solid var(--border);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;margin:0 16px}
+.standings-ph{border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:13px;margin:0 16px;background:rgba(128,128,128,0.1)}
 
-/* FORMATIONS */
-.formations-page{padding:44px 10px 70px;background:#f0f0f0;min-height:100vh}
-.team-section{margin-bottom:16px}
-.team-hdr{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding:7px 9px;border-radius:6px;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.1)}
-.team-logo{width:36px;height:36px;object-fit:contain;flex-shrink:0}
-.team-logo-ph{width:36px;height:36px;border-radius:4px;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
-.team-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;flex:1;line-height:1}
-.team-formation-lbl{font-size:10px;color:#999;letter-spacing:1px}
-.pitch{background:#fff;border:2px solid #333;position:relative;padding:8px 4px}
-.pitch.home-pitch{border-color:#c0392b}
-.pitch.away-pitch{border-color:#27ae60;margin-top:4px}
-.pitch-inner{position:relative}
-.penalty-box-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:55%;height:18%;border:1.5px solid rgba(0,0,0,0.15);border-top:none;pointer-events:none;z-index:1}
-.penalty-box-bot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:55%;height:18%;border:1.5px solid rgba(0,0,0,0.15);border-bottom:none;pointer-events:none;z-index:1}
-.mid-line{height:1px;background:rgba(0,0,0,0.12);margin:3px 0}
-.pitch-row{display:flex;justify-content:space-around;margin-bottom:4px;position:relative;z-index:2}
-.player-token{display:flex;flex-direction:column;align-items:center;gap:2px}
-.shirt-wrap{position:relative;width:32px;height:36px}
+/* ===================== UNIFIED PITCH ===================== */
+.formations-page{padding:8px 8px 80px;min-height:100vh}
+.form-page-title{font-size:13px;font-weight:700;text-align:center;padding:40px 12px 6px;letter-spacing:1px;opacity:0.8}
+.pitch-full{background:#2e8b45;border:2px solid rgba(255,255,255,0.3);border-radius:0;position:relative;margin:0 4px}
+.pitch-lines{position:absolute;inset:0;pointer-events:none}
+/* center line */
+.pitch-center-line{position:absolute;top:50%;left:5%;right:5%;height:1px;background:rgba(255,255,255,0.3)}
+/* center circle */
+.pitch-center-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;border:1px solid rgba(255,255,255,0.3)}
+/* penalty boxes */
+.pitch-box-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:52%;height:14%;border:1px solid rgba(255,255,255,0.3);border-top:none}
+.pitch-box-bot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:52%;height:14%;border:1px solid rgba(255,255,255,0.3);border-bottom:none}
+/* goal areas */
+.pitch-goal-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:24%;height:5%;border:1px solid rgba(255,255,255,0.25);border-top:none}
+.pitch-goal-bot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:24%;height:5%;border:1px solid rgba(255,255,255,0.25);border-bottom:none}
+
+.pitch-half{padding:6px 2px;position:relative;z-index:2}
+.pitch-row{display:flex;justify-content:space-around;margin-bottom:3px}
+.player-token{display:flex;flex-direction:column;align-items:center;gap:1px}
+.shirt-wrap{position:relative;width:30px;height:34px}
 .shirt-wrap svg{width:100%;height:100%}
-.shirt-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-44%);font-size:10px;font-weight:900;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.5);line-height:1;text-align:center;pointer-events:none}
-.shirt-num.dark{color:#222;text-shadow:none}
-.token-name{font-size:9px;color:#111;text-align:center;max-width:44px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.shirt-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-44%);font-size:9px;font-weight:900;line-height:1;text-align:center;pointer-events:none}
+.token-name{font-size:8px;text-align:center;max-width:42px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;line-height:1.1}
+
+/* Team headers on pitch */
+.pitch-team-header{display:flex;align-items:center;gap:6px;padding:4px 8px}
+.pitch-team-logo{width:24px;height:24px;object-fit:contain}
+.pitch-team-logo-ph{width:24px;height:24px;border-radius:3px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:10px}
+.pitch-team-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.7);flex:1}
+.pitch-team-formation{font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px}
+.pitch-coach-box{font-size:9px;color:rgba(255,255,255,0.7);padding:0 8px 3px;font-style:italic}
+.pitch-divider{height:1px;background:rgba(255,255,255,0.3);margin:2px 6px}
+
+/* Notification btn */
+.notify-btn{width:calc(100% - 16px);margin:8px 8px 0;padding:10px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:rgba(255,255,255,0.7);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:all 0.2s;font-family:'Source Sans 3',sans-serif}
+.notify-btn:hover{border-color:rgba(255,255,255,0.4);color:#fff}
+.notify-btn.active{background:rgba(0,230,118,0.1);border-color:#00e676;color:#00e676}
 
 /* RESERVES */
 .reserves-page{min-height:100vh;display:flex;flex-direction:column}
 .reserves-hdr{padding:44px 16px 10px}
-.reserves-hdr-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--fg)}
+.reserves-hdr-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px}
 .reserves-body{display:flex;flex:1}
-.res-col{flex:1;padding:12px 10px 70px}
-.res-col.home-col{border-right:2px solid #c0392b}
+.res-col{flex:1;padding:12px 10px 80px}
+.res-col.home-col{border-right:2px solid var(--h1)}
 .res-col-title{font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding-bottom:7px;margin-bottom:8px}
-.res-text{color:var(--fg);opacity:0.8;font-size:13px;line-height:2;white-space:pre-wrap}
+.res-text{font-size:13px;line-height:2;white-space:pre-wrap;opacity:0.85}
 
 /* H2H */
-.h2h-page{padding:44px 16px 70px}
-.h2h-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:var(--fg);margin-bottom:16px;line-height:1.1}
-.h2h-rows{display:flex;flex-direction:column;margin-bottom:18px;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
-.h2h-row{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--border);background:var(--card)}
-.h2h-row:last-child{border-bottom:none}
-.h2h-label{flex:1;font-size:15px;color:var(--fg);font-weight:600}
-.h2h-value{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--fg);min-width:44px;text-align:right}
-.h2h-label.home-label{color:var(--h1);filter:brightness(1.2)}
-.h2h-label.away-label{color:var(--a1);filter:brightness(1.2)}
+.h2h-page{padding:44px 16px 80px}
+.h2h-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:16px}
+.h2h-rows{display:flex;flex-direction:column;margin-bottom:18px;border-radius:8px;overflow:hidden;border:1px solid rgba(128,128,128,0.2)}
+.h2h-row{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid rgba(128,128,128,0.15)}
+.h2h-row:last-child{border-bottom:none;background:rgba(128,128,128,0.05)}
+.h2h-label{flex:1;font-size:15px;font-weight:600;opacity:0.9}
+.h2h-value{font-family:'Bebas Neue',sans-serif;font-size:28px;min-width:44px;text-align:right}
+.h2h-label.home-label{color:var(--h1);filter:brightness(1.2);opacity:1}
+.h2h-label.away-label{color:var(--a1);filter:brightness(1.2);opacity:1}
 .h2h-video{width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;background:#111}
 .h2h-video iframe{width:100%;height:100%;border:none}
 
 /* COACHES */
-.coaches-page{padding:44px 16px 70px}
-.coaches-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--fg);margin-bottom:16px}
+.coaches-page{padding:44px 16px 80px}
+.coaches-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:16px}
 .coaches-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.coach-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:14px 10px 12px}
+.coach-card{border:1px solid rgba(128,128,128,0.2);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:14px 10px 12px;background:rgba(128,128,128,0.06)}
 .coach-photo{width:80px;height:100px;object-fit:cover;object-position:top;border-radius:7px;border:2px solid var(--h1);margin-bottom:8px}
 .coach-photo.away{border-color:var(--a1)}
-.coach-photo-ph{width:80px;height:100px;border-radius:7px;background:linear-gradient(135deg,var(--h1)22,#111);border:2px solid var(--h1);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:8px}
-.coach-photo-ph.away{border-color:var(--a1);background:linear-gradient(135deg,var(--a1)22,#111)}
-.coach-name{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;color:var(--fg);text-align:center;letter-spacing:0.5px;margin-bottom:4px}
-.coach-team{font-size:10px;color:var(--muted);text-align:center;letter-spacing:1px;text-transform:uppercase}
+.coach-photo-ph{width:80px;height:100px;border-radius:7px;border:2px solid var(--h1);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:8px;background:rgba(128,128,128,0.1)}
+.coach-photo-ph.away{border-color:var(--a1)}
+.coach-name{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;text-align:center;letter-spacing:0.5px;margin-bottom:4px}
+.coach-team-lbl{font-size:10px;text-align:center;letter-spacing:1px;text-transform:uppercase;opacity:0.6}
 .coaches-texts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.coach-text-block{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px}
-.coach-text-label{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
-.coach-text{font-size:14px;line-height:1.7;color:var(--fg);opacity:0.8;white-space:pre-wrap}
+.coach-text-block{border:1px solid rgba(128,128,128,0.2);border-radius:8px;padding:12px;background:rgba(128,128,128,0.04)}
+.coach-text-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;opacity:0.6}
+.coach-text{font-size:14px;line-height:1.7;opacity:0.85;white-space:pre-wrap}
 
 /* PALMARES */
-.palmares-page{padding:44px 14px 70px}
-.palmares-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:var(--fg);margin-bottom:12px}
-.palmares-content{display:block}
+.palmares-page{padding:44px 14px 80px}
+.palmares-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:12px}
 .palmares-photo{float:left;width:40%;max-height:64vh;object-fit:cover;object-position:top;border-radius:8px;margin-right:12px;margin-bottom:6px;border:2px solid var(--h1)}
-.palmares-photo-ph{float:left;width:40%;height:64vh;border-radius:8px;margin-right:12px;margin-bottom:6px;background:linear-gradient(135deg,var(--h1)22,var(--h3)22);border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;font-size:28px}
-.palmares-text{font-size:15px;line-height:1.85;color:var(--fg);opacity:0.85;white-space:pre-wrap}
+.palmares-photo-ph{float:left;width:40%;height:40vh;border-radius:8px;margin-right:12px;margin-bottom:6px;border:2px dashed rgba(128,128,128,0.3);display:flex;align-items:center;justify-content:center;font-size:28px}
+.palmares-text{font-size:15px;line-height:1.85;opacity:0.85;white-space:pre-wrap}
 .palmares-clear{clear:both}
 
 /* AD */
-.ad-page{padding:44px 14px 70px;display:flex;flex-direction:column;min-height:100vh}
-.ad-title-txt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:14px;color:var(--fg)}
+.ad-page{padding:44px 14px 80px;display:flex;flex-direction:column;min-height:100vh}
+.ad-title-txt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:14px}
 .ad-content{flex:1;display:flex;align-items:center;justify-content:center}
-.ad-ph{background:var(--card);border:1px dashed var(--border);border-radius:8px;height:140px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;width:100%}
+.ad-ph{border:1px dashed rgba(128,128,128,0.3);border-radius:8px;height:140px;display:flex;align-items:center;justify-content:center;font-size:13px;width:100%;opacity:0.5}
 
 /* VOTE */
-.vote-page{padding:44px 14px 70px}
-.vote-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--fg);margin-bottom:2px}
-.vote-sub{color:var(--muted);font-size:11px;margin-bottom:14px}
+.vote-page{padding:44px 14px 80px}
+.vote-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;margin-bottom:2px}
+.vote-sub{font-size:11px;margin-bottom:14px;opacity:0.6}
 .vote-closed-banner{background:linear-gradient(135deg,var(--h1),var(--h3));border-radius:10px;padding:14px;text-align:center;margin-bottom:14px}
 .vote-closed-banner p{color:#fff;font-size:13px;font-weight:600}
 .vote-cands{display:flex;flex-direction:column;gap:8px}
-.vote-card{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:13px 14px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;gap:6px;position:relative}
-.vote-card:hover:not(.stopped){border-color:#444}
+.vote-card{border:2px solid rgba(128,128,128,0.2);border-radius:10px;padding:13px 14px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;gap:6px;position:relative;background:rgba(128,128,128,0.05)}
+.vote-card:hover:not(.stopped){border-color:rgba(128,128,128,0.4)}
 .vote-card.voted{border-color:#00e676;background:rgba(0,230,118,0.06)}
 .vote-card.mvp-card{border-color:gold;background:rgba(255,215,0,0.08)}
 .mvp-badge{position:absolute;top:-10px;right:12px;background:gold;color:#000;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;padding:2px 10px;border-radius:10px}
 .vc-top{display:flex;align-items:center;justify-content:space-between}
-.vc-name{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px;color:#fff}
-.vc-check{width:22px;height:22px;border-radius:50%;border:2px solid #444;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.2s;flex-shrink:0;color:#fff}
+.vc-name{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;letter-spacing:1px}
+.vc-check{width:22px;height:22px;border-radius:50%;border:2px solid rgba(128,128,128,0.4);display:flex;align-items:center;justify-content:center;font-size:11px;transition:all 0.2s;flex-shrink:0}
 .vote-card.voted .vc-check{background:#00e676;border-color:#00e676;color:#000}
 .vc-bar-wrap{background:rgba(255,255,255,0.08);border-radius:3px;height:5px;overflow:hidden}
 .vc-bar{height:100%;border-radius:3px;background:#00e676;transition:width 0.5s ease;width:0%}
 .vc-bar.mvp-bar{background:gold}
 .vc-stats{display:flex;justify-content:space-between;align-items:center}
 .vc-pct{font-size:16px;font-weight:700;color:#00e676}
-.vc-cnt{font-size:10px;color:var(--muted)}
-.vote-total{text-align:center;color:var(--muted);font-size:11px;margin-top:10px}
-.notify-btn{width:100%;margin-top:14px;padding:11px;background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--fg);font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s}
-.notify-btn:hover{border-color:var(--h1)}
-.notify-btn.active{background:rgba(0,230,118,0.08);border-color:#00e676;color:#00e676}
+.vc-cnt{font-size:10px;opacity:0.5}
+.vote-total{text-align:center;font-size:11px;margin-top:10px;opacity:0.5}
+.vote-notify-btn{width:100%;margin-top:14px;padding:11px;border:1px solid rgba(128,128,128,0.25);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;background:rgba(128,128,128,0.05);font-family:'Source Sans 3',sans-serif}
+.vote-notify-btn:hover{border-color:rgba(128,128,128,0.5)}
+.vote-notify-btn.active{background:rgba(0,230,118,0.08);border-color:#00e676;color:#00e676}
 
 /* PROMO */
-.promo-page{padding:44px 14px 70px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.promo-ph{background:var(--card);border:1px dashed var(--border);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;width:100%}
+.promo-page{padding:44px 14px 80px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.promo-ph{border:1px dashed rgba(128,128,128,0.3);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:13px;width:100%;opacity:0.5}
 
 /* PROGRAM */
 .program-page{padding:44px 0 0}
 .prog-photo{width:100%;height:33vh;object-fit:cover;display:block}
-.prog-photo-ph{width:100%;height:33vh;background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
-.prog-content{padding:16px 16px 70px}
-.prog-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--fg);margin-bottom:10px}
-.prog-text{color:var(--fg);opacity:0.85;font-size:15px;line-height:1.8;white-space:pre-wrap}
+.prog-photo-ph{width:100%;height:33vh;display:flex;align-items:center;justify-content:center;font-size:13px;opacity:0.4}
+.prog-content{padding:16px 16px 80px}
+.prog-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;margin-bottom:10px}
+.prog-text{font-size:15px;line-height:1.8;opacity:0.85;white-space:pre-wrap}
 </style>
 </head>
 <body>
 <%
+const pageBg = mag.pageBg || [];
+const pageFg = mag.pageFg || [];
+function pbg(i){ return pageBg[i-1] || '#0d0d0d'; }
+function pfg(i){ return pageFg[i-1] || '#ffffff'; }
+
 const FORMATIONS={
   '4-3-3':[[1],[4,3,2,5],[8,6,10],[9,7,11]],
   '4-4-2':[[1],[2,3,4,5],[6,7,8,9],[10,11]],
@@ -227,32 +240,38 @@ const FORMATIONS={
   '5-3-2':[[1],[2,3,5,4,6],[7,8,9],[10,11]]
 };
 function getRows(k){return FORMATIONS[k]||FORMATIONS['4-3-3'];}
-function shirtSVG(f1,f2,stroke){
-  return `<svg viewBox="0 0 50 55" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5,14 L0,28 L13,30 L13,54 L37,54 L37,30 L50,28 L45,14 L36,10 C34,16 16,16 14,10 Z" fill="${f1}" stroke="${stroke}" stroke-width="1.5"/>
-    <path d="M14,10 C16,16 34,16 36,10 L38,6 C34,2 30,0 25,0 C20,0 16,2 12,6 Z" fill="${f2}" stroke="${stroke}" stroke-width="1.5"/>
-  </svg>`;
+
+function shirtSVG(shirt, collar, numCol, num){
+  return `<div class="shirt-wrap">
+    <svg viewBox="0 0 50 55" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5,14 L0,28 L13,30 L13,54 L37,54 L37,30 L50,28 L45,14 L36,10 C34,16 16,16 14,10 Z" fill="${shirt}" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+      <path d="M14,10 C16,16 34,16 36,10 L38,6 C34,2 30,0 25,0 C20,0 16,2 12,6 Z" fill="${collar}" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+    </svg>
+    <div class="shirt-num" style="color:${numCol}">${num}</div>
+  </div>`;
 }
+
 const tocDefs=['Cuprins','Avancronica','Jucător Cheie','Clasament','Formații de Start','Rezerve','Head to Head','Ce spun antrenorii','Palmares','Reclamă','Jucătorul Meciului','Promo','Program'];
 const tocItems=mag.tocItems&&mag.tocItems.length===13?mag.tocItems:tocDefs;
 const tocPages=[2,[3,4],[5,6],7,8,9,10,11,12,13,14,15,16];
 
-// Club logo snippet reused on all pages
-const clubLogoHTML = mag.clubLogo
-  ? `<div class="club-logo-btn" onclick="goToPage(2)"><img src="${mag.clubLogo}" class="club-logo-img"><span class="club-logo-label">CUPRINS</span></div>`
-  : `<div class="club-logo-btn" onclick="goToPage(2)"><div class="club-logo-ph">🏠</div><span class="club-logo-label">CUPRINS</span></div>`;
+function clubBtn(pg){
+  const fg=pfg(pg);
+  if(mag.clubLogo){
+    return `<div class="club-logo-btn" onclick="goToPage(2)"><img src="${mag.clubLogo}" class="club-logo-img"><span class="club-logo-label" style="color:${fg}88">CUPRINS</span></div>`;
+  }
+  return `<div class="club-logo-btn" onclick="goToPage(2)"><div class="club-logo-ph">🏠</div><span class="club-logo-label" style="color:${fg}88">CUPRINS</span></div>`;
+}
 %>
 
 <div class="magazine" id="magazine">
 
 <!-- P1 COVER -->
-<div class="page" data-page="1">
+<div class="page" data-page="1" style="background:<%=pbg(1)%>;color:<%=pfg(1)%>">
   <div class="cover-page">
     <%if(mag.cover){%><img src="<%=mag.cover%>" class="cover-photo"><div class="cover-overlay"></div><%}else{%><div class="cover-no-photo"></div><div class="cover-overlay"></div><%}%>
     <div class="color-bar" style="position:absolute;top:0;left:0;right:0;z-index:3"></div>
-    <%if(mag.clubLogo){%>
-    <img src="<%=mag.clubLogo%>" class="cover-club-logo pos-<%=mag.logoPosition||'top-left'%> size-<%=mag.logoSize||'medium'%>">
-    <%}%>
+    <%if(mag.clubLogo){%><img src="<%=mag.clubLogo%>" class="cover-club-logo pos-<%=mag.logoPosition||'top-left'%> size-<%=mag.logoSize||'medium'%>"><%}%>
     <div class="cover-content">
       <div class="cover-comp">🏆 <%=mag.competition%> · <%=mag.matchDate%></div>
       <div class="cover-title"><%=mag.coverTitle||mag.homeTeam+' vs '+mag.awayTeam%></div>
@@ -263,17 +282,14 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P2 TOC -->
-<div class="page" data-page="2">
-  <%- clubLogoHTML %>
+<div class="page" data-page="2" style="background:<%=pbg(2)%>;color:<%=pfg(2)%>">
+  <%- clubBtn(2) %>
   <div class="toc-page">
-    <div class="toc-header">
-      <div class="toc-title">CUPRINS</div>
-      <div class="toc-subtitle">Apasă pentru a naviga direct</div>
-    </div>
+    <div class="toc-header"><div class="toc-title">CUPRINS</div><div class="toc-subtitle">Apasă pentru a naviga direct</div></div>
     <div class="toc-list">
-      <% tocItems.forEach(function(item,i){ const pg=tocPages[i]; const firstPg=Array.isArray(pg)?pg[0]:pg; const lastPg=Array.isArray(pg)?pg[pg.length-1]:pg; %>
-      <div class="toc-item" id="toc-<%=i%>" onclick="goToPage(<%=firstPg%>)">
-        <div class="toc-num"><%=firstPg%><%=lastPg!==firstPg?'-'+lastPg:''%></div>
+      <% tocItems.forEach(function(item,i){ const pg=tocPages[i]; const fp=Array.isArray(pg)?pg[0]:pg; const lp=Array.isArray(pg)?pg[pg.length-1]:pg; %>
+      <div class="toc-item" id="toc-<%=i%>" onclick="goToPage(<%=fp%>)" style="color:<%=pfg(2)%>">
+        <div class="toc-num" style="color:<%=pfg(2)%>"><%=fp%><%=lp!==fp?'-'+lp:''%></div>
         <div class="toc-text"><%=item%></div>
         <div class="toc-arrow">›</div>
       </div>
@@ -283,28 +299,28 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P3 -->
-<div class="page" data-page="3">
-  <%- clubLogoHTML %>
+<div class="page" data-page="3" style="background:<%=pbg(3)%>;color:<%=pfg(3)%>">
+  <%- clubBtn(3) %>
   <div class="pg">
     <div class="pg-label">Pagina 3</div>
-    <div class="pg-subtitle"><%=mag.avancronicaTitle||'Avancronica'%></div>
+    <div class="pg-subtitle" style="color:<%=pfg(3)%>"><%=mag.avancronicaTitle||'Avancronica'%></div>
     <div class="pg-body"><%=mag.avancronicaP1||'Conținut în curând...'%></div>
   </div>
 </div>
 
 <!-- P4 -->
-<div class="page" data-page="4">
-  <%- clubLogoHTML %>
+<div class="page" data-page="4" style="background:<%=pbg(4)%>;color:<%=pfg(4)%>">
+  <%- clubBtn(4) %>
   <div class="pg">
     <div class="pg-label">Pagina 4</div>
-    <div class="pg-subtitle"><%=mag.avancronicaTitle||'Avancronica'%> (cont.)</div>
-    <div class="pg-body"><%=mag.avancronicaP2||'Conținut în curând...'%></div>
+    <div class="pg-subtitle" style="color:<%=pfg(4)%>"><%=mag.avancronicaTitle||'Avancronica'%> (cont.)</div>
+    <div class="pg-body"><%=mag.avancronicaP2||''%></div>
   </div>
 </div>
 
 <!-- P5 -->
-<div class="page" data-page="5">
-  <%- clubLogoHTML %>
+<div class="page" data-page="5" style="background:<%=pbg(5)%>;color:<%=pfg(5)%>">
+  <%- clubBtn(5) %>
   <div class="player-area">
     <%if(mag.playerPhoto){%><img src="<%=mag.playerPhoto%>" class="player-photo"><%}else{%><div class="player-photo-ph">⭐</div><%}%>
     <div class="player-info">
@@ -312,97 +328,131 @@ const clubLogoHTML = mag.clubLogo
       <%if(mag.playerSubtitle){%><div class="player-sub"><%=mag.playerSubtitle%></div><%}%>
     </div>
   </div>
-  <div class="divider"></div>
+  <div class="divider-line"></div>
   <div class="pg" style="padding-top:12px"><div class="pg-body"><%=mag.playerText||''%></div></div>
 </div>
 
 <!-- P6 -->
-<div class="page" data-page="6">
-  <%- clubLogoHTML %>
+<div class="page" data-page="6" style="background:<%=pbg(6)%>;color:<%=pfg(6)%>">
+  <%- clubBtn(6) %>
   <div class="pg">
     <div class="pg-label">Pagina 6</div>
-    <div class="pg-subtitle" style="border-left-color:var(--a1)"><%=mag.playerTitle||'Profil'%></div>
+    <div class="pg-subtitle" style="border-left-color:var(--a1);color:<%=pfg(6)%>"><%=mag.playerTitle||'Profil'%></div>
     <div class="pg-body"><%=mag.playerText||''%></div>
   </div>
 </div>
 
 <!-- P7 STANDINGS -->
-<div class="page" data-page="7">
-  <%- clubLogoHTML %>
+<div class="page" data-page="7" style="background:<%=pbg(7)%>;color:<%=pfg(7)%>">
+  <%- clubBtn(7) %>
   <div class="standings-page">
     <div class="standings-title"><%=mag.standingsTitle||'Clasament'%></div>
-    <%if(mag.standingsEmbed){%>
-    <div class="standings-wrap" id="standingsWrap"><%- mag.standingsEmbed %></div>
-    <%}else{%><div class="standings-ph">📊 Adaugă embed clasament</div><%}%>
+    <%if(mag.standingsEmbed){%><div class="standings-wrap"><%- mag.standingsEmbed %></div><%}else{%><div class="standings-ph">📊 Adaugă embed clasament</div><%}%>
   </div>
 </div>
 
-<!-- P8 FORMATIONS -->
-<div class="page" data-page="8">
-  <%- clubLogoHTML %>
+<!-- P8 UNIFIED FORMATIONS -->
+<div class="page" data-page="8" style="background:<%=pbg(8)%>;color:<%=pfg(8)%>">
+  <%- clubBtn(8) %>
   <div class="formations-page">
+    <div class="form-page-title" style="color:<%=pfg(8)%>"><%=mag.formationTitle||'Formații probabile'%></div>
     <%
-    const hC1=mag.homeColor1, hC2=mag.homeColor2||mag.homeColor1, hC3=mag.homeColor3||mag.homeColor1;
-    const hRows=getRows(mag.homeFormation);const hRev=[...hRows].reverse();
+    const hSC=mag.homeShirtColor||'#e63946';
+    const hCC=mag.homeCollarColor||'#1d3557';
+    const hNC=mag.homeNumColor||'#ffffff';
+    const hNmC=mag.homeNameColor||'#ffffff';
+    const aSC=mag.awayShirtColor||'#457b9d';
+    const aCC=mag.awayCollarColor||'#ffffff';
+    const aNC=mag.awayNumColor||'#ffffff';
+    const aNmC=mag.awayNameColor||'#ffffff';
+    const hRows=getRows(mag.homeFormation);
+    const aRows=getRows(mag.awayFormation);
+    // Home: GK first (top), then defenders, mids, forwards toward center
+    const hRev=[...hRows].reverse(); // reversed: GK row last displayed = top of pitch
+    // Away: forwards toward center (top of away half), GK at bottom
+    const aFwd=[...aRows]; // normal order: first row = GK at bottom
     %>
-    <div class="team-section">
-      <div class="team-hdr">
-        <%if(mag.homeLogoPhoto){%><img src="<%=mag.homeLogoPhoto%>" class="team-logo"><%}else{%><div class="team-logo-ph">🔴</div><%}%>
-        <div><div class="team-title" style="color:#c0392b"><%=mag.homeFormationTitle||mag.homeTeam%></div><div class="team-formation-lbl"><%=mag.homeFormation%></div></div>
+    <div class="pitch-full">
+      <!-- Pitch lines overlay -->
+      <div class="pitch-lines">
+        <div class="pitch-center-line"></div>
+        <div class="pitch-center-circle"></div>
+        <div class="pitch-box-top"></div>
+        <div class="pitch-box-bot"></div>
+        <div class="pitch-goal-top"></div>
+        <div class="pitch-goal-bot"></div>
       </div>
-      <div class="pitch home-pitch"><div class="pitch-inner">
-        <div class="penalty-box-top"></div><div class="penalty-box-bot"></div>
-        <%let hi=0;hRev.forEach(function(row,ri){%>
-        <div class="pitch-row"><%row.forEach(function(s){
-          const num=(mag.homePlayerNumbers&&mag.homePlayerNumbers[hi])?mag.homePlayerNumbers[hi]:s;
-          const name=(mag.homePlayerNames&&mag.homePlayerNames[hi])?mag.homePlayerNames[hi]:'';
-          const isGK=(ri===hRev.length-1);
-          const f1=isGK?'#f9e79f':hC1; const f2=isGK?'#f0d060':hC2; const stk=isGK?'#c0a000':'#00000033';
-          hi++;
-        %><div class="player-token"><div class="shirt-wrap"><%- shirtSVG(f1,f2,stk) %><div class="shirt-num <%=isGK?'dark':''%>"><%=num%></div></div><div class="token-name"><%=name%></div></div>
-        <%})%></div>
-        <%if(ri===Math.floor(hRev.length/2)-1){%><div class="mid-line"></div><%}%>
-        <%})%>
-      </div></div>
-    </div>
-    <%
-    const aRows=getRows(mag.awayFormation);const aRev=[...aRows].reverse();
-    %>
-    <div class="team-section">
-      <div class="team-hdr">
-        <%if(mag.awayLogoPhoto){%><img src="<%=mag.awayLogoPhoto%>" class="team-logo"><%}else{%><div class="team-logo-ph">🟢</div><%}%>
-        <div><div class="team-title" style="color:#27ae60"><%=mag.awayFormationTitle||mag.awayTeam%></div><div class="team-formation-lbl"><%=mag.awayFormation%></div></div>
+
+      <!-- HOME TEAM (top half) -->
+      <div class="pitch-team-header">
+        <%if(mag.homeLogoPhoto){%><img src="<%=mag.homeLogoPhoto%>" class="pitch-team-logo"><%}else{%><div class="pitch-team-logo-ph">🔴</div><%}%>
+        <div class="pitch-team-name"><%=mag.homeFormationTitle||mag.homeTeam%></div>
+        <div class="pitch-team-formation"><%=mag.homeFormation%></div>
       </div>
-      <div class="pitch away-pitch"><div class="pitch-inner">
-        <div class="penalty-box-top"></div><div class="penalty-box-bot"></div>
-        <%let ai=0;aRev.forEach(function(row,ri){%>
-        <div class="pitch-row"><%row.forEach(function(s){
-          const num=(mag.awayPlayerNumbers&&mag.awayPlayerNumbers[ai])?mag.awayPlayerNumbers[ai]:s;
-          const name=(mag.awayPlayerNames&&mag.awayPlayerNames[ai])?mag.awayPlayerNames[ai]:'';
-          const isGK=(ri===aRev.length-1);
-          const f1=isGK?'#aed6f1':'#ffffff'; const f2=isGK?'#7fb3d3':'#e8e8e8'; const stk=isGK?'#27ae60':'#27ae6033';
-          ai++;
-        %><div class="player-token"><div class="shirt-wrap"><%- shirtSVG(f1,f2,stk) %><div class="shirt-num dark"><%=num%></div></div><div class="token-name"><%=name%></div></div>
-        <%})%></div>
-        <%if(ri===Math.floor(aRev.length/2)-1){%><div class="mid-line"></div><%}%>
-        <%})%>
-      </div></div>
+      <%if(mag.homeCoachFormation){%><div class="pitch-coach-box">Antrenor: <%=mag.homeCoachFormation%></div><%}%>
+      <div class="pitch-half">
+        <% let hi=0; hRev.forEach(function(row, ri){ %>
+        <div class="pitch-row">
+          <% row.forEach(function(s){
+            const num=(mag.homePlayerNumbers&&mag.homePlayerNumbers[hi])?mag.homePlayerNumbers[hi]:s;
+            const name=(mag.homePlayerNames&&mag.homePlayerNames[hi])?mag.homePlayerNames[hi]:'';
+            const isGK=(ri===hRev.length-1);
+            const sc=isGK?'#f9e79f':hSC; const cc=isGK?'#c8a000':hCC; const nc=isGK?'#333':hNC;
+            hi++;
+          %>
+          <div class="player-token">
+            <%- shirtSVG(sc, cc, nc, num) %>
+            <div class="token-name" style="color:<%=hNmC%>"><%=name%></div>
+          </div>
+          <% }) %>
+        </div>
+        <% }) %>
+      </div>
+
+      <div class="pitch-divider"></div>
+
+      <!-- AWAY TEAM (bottom half) -->
+      <div class="pitch-half">
+        <% let ai=0; aFwd.forEach(function(row, ri){ %>
+        <div class="pitch-row">
+          <% row.forEach(function(s){
+            const num=(mag.awayPlayerNumbers&&mag.awayPlayerNumbers[ai])?mag.awayPlayerNumbers[ai]:s;
+            const name=(mag.awayPlayerNames&&mag.awayPlayerNames[ai])?mag.awayPlayerNames[ai]:'';
+            const isGK=(ri===0);
+            const sc=isGK?'#aed6f1':aSC; const cc=isGK?'#27ae60':aCC; const nc=isGK?'#333':aNC;
+            ai++;
+          %>
+          <div class="player-token">
+            <%- shirtSVG(sc, cc, nc, num) %>
+            <div class="token-name" style="color:<%=aNmC%>"><%=name%></div>
+          </div>
+          <% }) %>
+        </div>
+        <% }) %>
+      </div>
+      <%if(mag.awayCoachFormation){%><div class="pitch-coach-box">Antrenor: <%=mag.awayCoachFormation%></div><%}%>
+      <div class="pitch-team-header">
+        <%if(mag.awayLogoPhoto){%><img src="<%=mag.awayLogoPhoto%>" class="pitch-team-logo"><%}else{%><div class="pitch-team-logo-ph">🟢</div><%}%>
+        <div class="pitch-team-name"><%=mag.awayFormationTitle||mag.awayTeam%></div>
+        <div class="pitch-team-formation"><%=mag.awayFormation%></div>
+      </div>
     </div>
+    <button class="notify-btn" id="formNotifyBtn" onclick="toggleFormNotify()">🔔 Activează notificare formații de start</button>
   </div>
 </div>
 
 <!-- P9 RESERVES -->
-<div class="page" data-page="9">
-  <%- clubLogoHTML %>
+<div class="page" data-page="9" style="background:<%=pbg(9)%>;color:<%=pfg(9)%>">
+  <%- clubBtn(9) %>
   <div class="reserves-page">
     <div class="reserves-hdr"><div class="reserves-hdr-title">REZERVE</div></div>
     <div class="reserves-body">
       <div class="res-col home-col">
-        <div class="res-col-title" style="color:#c0392b;border-bottom:2px solid #c0392b"><%=mag.homeTeam%></div>
+        <div class="res-col-title" style="color:var(--h1);border-bottom:2px solid var(--h1)"><%=mag.homeTeam%></div>
         <div class="res-text"><%=mag.homeReserves||'–'%></div>
       </div>
       <div class="res-col away-col">
-        <div class="res-col-title" style="color:#27ae60;border-bottom:2px solid #27ae60"><%=mag.awayTeam%></div>
+        <div class="res-col-title" style="color:var(--a1);border-bottom:2px solid var(--a1)"><%=mag.awayTeam%></div>
         <div class="res-text"><%=mag.awayReserves||'–'%></div>
       </div>
     </div>
@@ -410,8 +460,8 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P10 H2H -->
-<div class="page" data-page="10">
-  <%- clubLogoHTML %>
+<div class="page" data-page="10" style="background:<%=pbg(10)%>;color:<%=pfg(10)%>">
+  <%- clubBtn(10) %>
   <div class="h2h-page">
     <div class="h2h-title"><%=mag.h2hTitle||'Întâlniri directe'%></div>
     <%if(mag.h2hLabels&&mag.h2hLabels.length){%>
@@ -423,7 +473,7 @@ const clubLogoHTML = mag.clubLogo
         const isHome=lbl.toLowerCase().includes(hw);
         const isAway=!isHome&&lbl.toLowerCase().includes(aw);
       %>
-      <div class="h2h-row">
+      <div class="h2h-row" style="background:rgba(128,128,128,0.05)">
         <div class="h2h-label <%=isHome?'home-label':isAway?'away-label':''%>"><%=lbl%></div>
         <div class="h2h-value"><%=val%></div>
       </div>
@@ -435,29 +485,29 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P11 COACHES -->
-<div class="page" data-page="11">
-  <%- clubLogoHTML %>
+<div class="page" data-page="11" style="background:<%=pbg(11)%>;color:<%=pfg(11)%>">
+  <%- clubBtn(11) %>
   <div class="coaches-page">
     <div class="coaches-title"><%=mag.coachesTitle||'Ce spun antrenorii'%></div>
     <div class="coaches-grid">
       <div class="coach-card">
         <%if(mag.homeCoachPhoto){%><img src="<%=mag.homeCoachPhoto%>" class="coach-photo"><%}else{%><div class="coach-photo-ph">👨‍💼</div><%}%>
         <div class="coach-name"><%=mag.homeCoachName||'Antrenor Gazde'%></div>
-        <div class="coach-team" style="color:var(--h1)"><%=mag.homeTeam%></div>
+        <div class="coach-team-lbl" style="color:var(--h1);opacity:1"><%=mag.homeTeam%></div>
       </div>
       <div class="coach-card">
         <%if(mag.awayCoachPhoto){%><img src="<%=mag.awayCoachPhoto%>" class="coach-photo away"><%}else{%><div class="coach-photo-ph away">👨‍💼</div><%}%>
         <div class="coach-name"><%=mag.awayCoachName||'Antrenor Oaspete'%></div>
-        <div class="coach-team" style="color:var(--a1)"><%=mag.awayTeam%></div>
+        <div class="coach-team-lbl" style="color:var(--a1);opacity:1"><%=mag.awayTeam%></div>
       </div>
     </div>
     <div class="coaches-texts">
       <div class="coach-text-block">
-        <div class="coach-text-label" style="color:var(--h1)"><%=mag.homeCoachName||mag.homeTeam%></div>
+        <div class="coach-text-label" style="color:var(--h1);opacity:1"><%=mag.homeCoachName||mag.homeTeam%></div>
         <div class="coach-text"><%=mag.homeCoachText||''%></div>
       </div>
       <div class="coach-text-block">
-        <div class="coach-text-label" style="color:var(--a1)"><%=mag.awayCoachName||mag.awayTeam%></div>
+        <div class="coach-text-label" style="color:var(--a1);opacity:1"><%=mag.awayCoachName||mag.awayTeam%></div>
         <div class="coach-text"><%=mag.awayCoachText||''%></div>
       </div>
     </div>
@@ -465,11 +515,11 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P12 PALMARES -->
-<div class="page" data-page="12">
-  <%- clubLogoHTML %>
+<div class="page" data-page="12" style="background:<%=pbg(12)%>;color:<%=pfg(12)%>">
+  <%- clubBtn(12) %>
   <div class="palmares-page">
     <div class="palmares-title"><%=mag.palmaresTitle||'Palmares'%></div>
-    <div class="palmares-content">
+    <div>
       <%if(mag.palmaresPhoto){%><img src="<%=mag.palmaresPhoto%>" class="palmares-photo"><%}else{%><div class="palmares-photo-ph">🏆</div><%}%>
       <div class="palmares-text"><%=mag.palmaresText||''%></div>
       <div class="palmares-clear"></div>
@@ -478,8 +528,8 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P13 AD -->
-<div class="page" data-page="13">
-  <%- clubLogoHTML %>
+<div class="page" data-page="13" style="background:<%=pbg(13)%>;color:<%=pfg(13)%>">
+  <%- clubBtn(13) %>
   <div class="ad-page">
     <%if(mag.adTitle){%><div class="ad-title-txt"><%=mag.adTitle%></div><%}%>
     <div class="ad-content"><%if(mag.adEmbed){%><%- mag.adEmbed %><%}else{%><div class="ad-ph">📢 Spațiu publicitar</div><%}%></div>
@@ -487,51 +537,41 @@ const clubLogoHTML = mag.clubLogo
 </div>
 
 <!-- P14 VOTE -->
-<div class="page" data-page="14">
-  <%- clubLogoHTML %>
+<div class="page" data-page="14" style="background:<%=pbg(14)%>;color:<%=pfg(14)%>">
+  <%- clubBtn(14) %>
   <div class="vote-page">
     <div class="vote-title">🏅 JUCĂTORUL MECIULUI</div>
     <div class="vote-sub" id="voteSubtitle"><%=mag.voteStopped?'Votul s-a încheiat':'Votează favoritul tău · Un vot per dispozitiv'%></div>
-    <%if(mag.voteStopped){%>
-    <div class="vote-closed-banner"><p>🏆 Votul s-a încheiat! MVP: <strong><%=mag.mvp||'–'%></strong></p></div>
-    <%}%>
+    <%if(mag.voteStopped){%><div class="vote-closed-banner"><p>🏆 Votul s-a încheiat! MVP: <strong><%=mag.mvp||'–'%></strong></p></div><%}%>
     <%const cands=[mag.voteCandidate0,mag.voteCandidate1,mag.voteCandidate2];%>
     <%if(cands.some(c=>c&&c.trim())){%>
     <div class="vote-cands" id="voteCands">
       <%cands.forEach(function(name,i){if(name&&name.trim()){%>
       <div class="vote-card <%=mag.voteStopped?'stopped':''%> <%=mag.voteStopped&&mag.mvp===name?'mvp-card':''%>" id="vc<%=i%>" onclick="castVote(<%=i%>)">
         <%if(mag.voteStopped&&mag.mvp===name){%><div class="mvp-badge">MVP 🏆</div><%}%>
-        <div class="vc-top">
-          <div class="vc-name"><%=name%></div>
-          <div class="vc-check" id="chk<%=i%>">✓</div>
-        </div>
+        <div class="vc-top"><div class="vc-name" style="color:<%=pfg(14)%>"><%=name%></div><div class="vc-check" id="chk<%=i%>">✓</div></div>
         <div class="vc-bar-wrap"><div class="vc-bar <%=mag.voteStopped&&mag.mvp===name?'mvp-bar':''%>" id="bar<%=i%>"></div></div>
-        <div class="vc-stats">
-          <div class="vc-pct" id="pct<%=i%>">0%</div>
-          <div class="vc-cnt" id="cnt<%=i%>">0 voturi</div>
-        </div>
+        <div class="vc-stats"><div class="vc-pct" id="pct<%=i%>">0%</div><div class="vc-cnt" id="cnt<%=i%>">0 voturi</div></div>
       </div>
       <%}})%>
     </div>
     <div class="vote-total" id="vTotal">0 voturi totale</div>
-    <button class="notify-btn" id="notifyBtn" onclick="toggleNotify()">
-      🔔 Notifică-mă când se deschide votul
-    </button>
-    <%}else{%><div style="color:var(--muted);text-align:center;padding:40px;font-size:14px">Candidații vor fi anunțați în curând</div><%}%>
+    <button class="vote-notify-btn" id="voteNotifyBtn" onclick="toggleVoteNotify()" style="color:<%=pfg(14)%>">🔔 Notifică-mă când se deschide votul</button>
+    <%}else{%><div style="text-align:center;padding:40px;font-size:14px;opacity:0.5">Candidații vor fi anunțați în curând</div><%}%>
   </div>
 </div>
 
 <!-- P15 PROMO -->
-<div class="page" data-page="15">
-  <%- clubLogoHTML %>
+<div class="page" data-page="15" style="background:<%=pbg(15)%>;color:<%=pfg(15)%>">
+  <%- clubBtn(15) %>
   <div class="promo-page">
     <%if(mag.promoEmbed){%><div style="width:100%"><%- mag.promoEmbed %></div><%}else{%><div class="promo-ph">📣 Spațiu banner publicitar</div><%}%>
   </div>
 </div>
 
 <!-- P16 PROGRAM -->
-<div class="page" data-page="16">
-  <%- clubLogoHTML %>
+<div class="page" data-page="16" style="background:<%=pbg(16)%>;color:<%=pfg(16)%>">
+  <%- clubBtn(16) %>
   <div class="program-page">
     <%if(mag.stadiumPhoto){%><img src="<%=mag.stadiumPhoto%>" class="prog-photo"><%}else{%><div class="prog-photo-ph">🏟️</div><%}%>
     <div class="prog-content">
@@ -541,11 +581,14 @@ const clubLogoHTML = mag.clubLogo
   </div>
 </div>
 
-</div>
+</div><!-- end magazine -->
 
-<button class="arrow arrow-left hidden" id="arrowLeft" onclick="nav(-1)">‹</button>
-<button class="arrow arrow-right" id="arrowRight" onclick="nav(1)">›</button>
-<div class="nav-dots" id="navDots"><%for(let i=1;i<=16;i++){%><div class="dot <%=i===1?'active':''%>" onclick="goToPage(<%=i%>)"></div><%}%></div>
+<!-- BOTTOM NAV BAR -->
+<div class="nav-bar" id="navBar">
+  <button class="nav-arrow hidden" id="arrowLeft" onclick="nav(-1)">‹</button>
+  <div class="nav-dots" id="navDots"><%for(let i=1;i<=16;i++){%><div class="dot <%=i===1?'active':''%>" onclick="goToPage(<%=i%>)"></div><%}%></div>
+  <button class="nav-arrow hidden" id="arrowRight" onclick="nav(1)">›</button>
+</div>
 <div class="page-num" id="pageNum">1 / 16</div>
 
 <script>
@@ -554,42 +597,9 @@ const TOTAL=16;
 let cur=1,sx=0,sy=0,drag=false;
 let myVote=localStorage.getItem('v_'+MAG_ID);
 myVote=myVote!==null?parseInt(myVote):null;
-let notifyEnabled=localStorage.getItem('notify_'+MAG_ID)==='1';
+let voteNotifyOn=localStorage.getItem('vnotify_'+MAG_ID)==='1';
+let formNotifyOn=localStorage.getItem('fnotify_'+MAG_ID)==='1';
 const mag=document.getElementById('magazine');
-
-// Update notify button state
-function updateNotifyBtn(){
-  const btn=document.getElementById('notifyBtn');
-  if(!btn)return;
-  if(notifyEnabled){btn.textContent='🔔 Notificare activată';btn.classList.add('active');}
-  else{btn.textContent='🔔 Notifică-mă când se deschide votul';btn.classList.remove('active');}
-}
-updateNotifyBtn();
-
-function toggleNotify(){
-  if(!('Notification' in window)){alert('Browserul tău nu suportă notificări.');return;}
-  if(notifyEnabled){notifyEnabled=false;localStorage.setItem('notify_'+MAG_ID,'0');updateNotifyBtn();return;}
-  Notification.requestPermission().then(p=>{
-    if(p==='granted'){notifyEnabled=true;localStorage.setItem('notify_'+MAG_ID,'1');updateNotifyBtn();
-      new Notification('MatchMag 🏆',{body:'Vei fi notificat când votul se deschide!',icon:'/favicon.ico'});}
-    else{alert('Permisiunea pentru notificări a fost refuzată.');}
-  });
-}
-
-// Poll for vote open (check every 30s if vote becomes active)
-function checkVoteStatus(){
-  fetch(`/api/votes/${MAG_ID}`).then(r=>r.json()).then(d=>{
-    if(notifyEnabled&&!d.voteStopped&&cur===14){
-      // vote is open - notify
-      if(Notification.permission==='granted'){
-        new Notification('⚽ Votul este deschis!',{body:'Alege jucătorul meciului acum!',icon:'/favicon.ico'});
-        notifyEnabled=false;localStorage.setItem('notify_'+MAG_ID,'0');updateNotifyBtn();
-      }
-    }
-    renderVotes(d.votes,d.voteStopped,d.mvp);
-  });
-}
-setInterval(checkVoteStatus,30000);
 
 function playRustle(){
   try{
@@ -632,25 +642,25 @@ function goToPage(n){
   if(n===14)loadVotes();
 }
 
+// Update arrow visibility on start
+document.getElementById('arrowRight').classList.remove('hidden');
+
+// VOTE
 function castVote(ci){
-  const prev=myVote;
   fetch(`/api/votes/${MAG_ID}`).then(r=>r.json()).then(d=>{
     if(d.voteStopped)return;
     if(myVote===ci)return;
-    myVote=ci;localStorage.setItem('v_'+MAG_ID,ci);
+    const prev=myVote; myVote=ci; localStorage.setItem('v_'+MAG_ID,ci);
     fetch(`/api/vote/${MAG_ID}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({candidate:ci,previousCandidate:prev})})
       .then(r=>r.json()).then(d=>renderVotes(d.votes,d.voteStopped,d.mvp));
   });
 }
-
 function loadVotes(){fetch(`/api/votes/${MAG_ID}`).then(r=>r.json()).then(d=>renderVotes(d.votes,d.voteStopped,d.mvp));}
-
 function renderVotes(votes,stopped,mvp){
   if(!votes)return;
   const total=Object.values(votes).reduce((a,b)=>a+b,0);
   const el=document.getElementById('vTotal');if(el)el.textContent=`${total} vot${total!==1?'uri':''} totale`;
-  const sub=document.getElementById('voteSubtitle');
-  if(sub)sub.textContent=stopped?'Votul s-a încheiat':'Votează favoritul tău · Un vot per dispozitiv';
+  const sub=document.getElementById('voteSubtitle');if(sub)sub.textContent=stopped?'Votul s-a încheiat':'Votează favoritul tău · Un vot per dispozitiv';
   const cands=['<%=mag.voteCandidate0%>','<%=mag.voteCandidate1%>','<%=mag.voteCandidate2%>'];
   [0,1,2].forEach(i=>{
     const card=document.getElementById('vc'+i);if(!card)return;
@@ -662,16 +672,52 @@ function renderVotes(votes,stopped,mvp){
     card.classList.toggle('stopped',!!stopped);
     const isMVP=stopped&&mvp&&mvp===cands[i];
     card.classList.toggle('mvp-card',!!isMVP);
-    const bar=document.getElementById('bar'+i);
-    if(bar)bar.className='vc-bar'+(isMVP?' mvp-bar':'');
-    // remove/add MVP badge
+    const bar=document.getElementById('bar'+i);if(bar)bar.className='vc-bar'+(isMVP?' mvp-bar':'');
     let badge=card.querySelector('.mvp-badge');
     if(isMVP&&!badge){badge=document.createElement('div');badge.className='mvp-badge';badge.textContent='MVP 🏆';card.insertBefore(badge,card.firstChild);}
     else if(!isMVP&&badge)badge.remove();
   });
 }
-
 if(document.getElementById('vc0'))loadVotes();
+
+// NOTIFICATIONS
+function requestAndSetNotify(key, btnId, onLabel, offLabel, onCallback){
+  if(!('Notification' in window)){alert('Browserul tău nu suportă notificări.');return;}
+  const current=localStorage.getItem(key)==='1';
+  if(current){
+    localStorage.setItem(key,'0');
+    const btn=document.getElementById(btnId);if(btn){btn.textContent=offLabel;btn.classList.remove('active');}
+    return;
+  }
+  Notification.requestPermission().then(p=>{
+    if(p==='granted'){
+      localStorage.setItem(key,'1');
+      const btn=document.getElementById(btnId);if(btn){btn.textContent=onLabel;btn.classList.add('active');}
+      new Notification('MatchMag 🏆',{body:'Notificare activată!',icon:'/favicon.ico'});
+      if(onCallback)onCallback();
+    } else { alert('Permisiunea pentru notificări a fost refuzată.'); }
+  });
+}
+
+function toggleVoteNotify(){
+  requestAndSetNotify('vnotify_'+MAG_ID,'voteNotifyBtn','🔔 Notificare activată ✓','🔔 Notifică-mă când se deschide votul');
+}
+function toggleFormNotify(){
+  requestAndSetNotify('fnotify_'+MAG_ID,'formNotifyBtn','🔔 Notificare formații activată ✓','🔔 Activează notificare formații de start');
+}
+
+// Update button states on load
+(function(){
+  const vb=document.getElementById('voteNotifyBtn');
+  if(vb&&localStorage.getItem('vnotify_'+MAG_ID)==='1'){vb.textContent='🔔 Notificare activată ✓';vb.classList.add('active');}
+  const fb=document.getElementById('formNotifyBtn');
+  if(fb&&localStorage.getItem('fnotify_'+MAG_ID)==='1'){fb.textContent='🔔 Notificare formații activată ✓';fb.classList.add('active');}
+})();
+
+// Poll every 30s for vote/formation updates
+setInterval(()=>{
+  fetch(`/api/votes/${MAG_ID}`).then(r=>r.json()).then(d=>renderVotes(d.votes,d.voteStopped,d.mvp));
+},30000);
 </script>
 </body>
 </html>
