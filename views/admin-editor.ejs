@@ -22,14 +22,14 @@ h1{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:3px;margin-
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:#00e676;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #1e1e1e}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.row4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px}
 .f{margin-bottom:10px}
 label{display:block;color:#777;font-size:10px;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
 input[type=text],input[type=date],textarea,select{width:100%;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;color:#fff;padding:8px 10px;font-size:13px;font-family:inherit;outline:none;transition:border-color 0.2s;resize:vertical}
 input[type=color]{width:100%;height:34px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;cursor:pointer;padding:2px 4px}
 input[type=checkbox]{width:16px;height:16px;accent-color:#00e676;cursor:pointer}
 input:focus,textarea:focus,select:focus{border-color:#00e676}
-.cc{text-align:right;font-size:10px;color:#444;margin-top:2px}
-.cc.warn{color:#ff9800}
+.cc{text-align:right;font-size:10px;color:#444;margin-top:2px}.cc.warn{color:#ff9800}
 .fu{background:#1a1a1a;border:2px dashed #2a2a2a;border-radius:7px;padding:12px;text-align:center;cursor:pointer;transition:border-color 0.2s}
 .fu:hover{border-color:#00e676}.fu input{display:none}
 .fu-lbl{color:#444;font-size:11px;cursor:pointer}
@@ -40,17 +40,29 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 .color-row input[type=color]{width:40px;height:30px;flex-shrink:0}
 .color-row label{margin:0;flex:1;font-size:12px;color:#ccc;text-transform:none;letter-spacing:0}
 .color-row input[type=checkbox]{flex-shrink:0}
+
+/* PER-PAGE COLOR TABLE */
+.page-color-grid{display:flex;flex-direction:column;gap:6px}
+.page-color-row{display:flex;align-items:center;gap:10px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:7px;padding:8px 12px}
+.page-color-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#00e676;width:28px;flex-shrink:0;text-align:center}
+.page-color-name{flex:1;font-size:12px;color:#aaa}
+.page-color-pair{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.page-color-pair label{font-size:9px;color:#555;text-transform:uppercase;letter-spacing:1px;margin:0;width:20px;text-align:center}
+.page-color-pair input[type=color]{width:36px;height:28px}
+
 /* TOC */
 .toc-row{display:flex;align-items:center;gap:8px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;padding:7px 10px;margin-bottom:4px}
 .toc-pg{color:#00e676;font-family:'Bebas Neue',sans-serif;font-size:15px;width:40px;flex-shrink:0;text-align:center}
 .toc-row input{flex:1;background:transparent;border:none;color:#fff;font-size:13px;outline:none;border-bottom:1px solid transparent}
 .toc-row input:focus{border-bottom-color:#00e676}
+
 /* H2H */
 .h2h-row{display:flex;gap:8px;align-items:center;margin-bottom:6px}
 .h2h-row input:first-child{flex:2}
 .h2h-row input:last-child{width:70px;flex-shrink:0;text-align:center}
 .btn-add{background:#1a2a1a;border:1px solid #2a3a2a;color:#00e676;border-radius:6px;padding:6px 12px;font-size:11px;cursor:pointer}
 .btn-rem{background:#2a1a1a;border:1px solid #3a2a2a;color:#f44336;border-radius:5px;padding:4px 7px;font-size:10px;cursor:pointer}
+
 /* FORMATION */
 .form-sel{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
 .fb{padding:5px 9px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;color:#777;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s}
@@ -64,33 +76,35 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 .ni{width:26px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:#fff;font-size:9px;padding:2px 3px;text-align:center;outline:none}
 .nmi{width:58px;background:rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:#fff;font-size:8px;padding:2px 4px;text-align:center;outline:none}
 .ni:focus,.nmi:focus{border-color:#00e676}
-/* VOTE STOP */
-.vote-status{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.vote-status-info{font-size:13px;color:#ccc}
-.vote-status-info strong{color:#fff}
-.btn-stop{background:#c0392b;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;transition:background 0.2s}
-.btn-stop:hover{background:#e74c3c}
-.btn-start{background:#27ae60;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer}
-.mvp-display{background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:8px;padding:12px;text-align:center;margin-bottom:12px}
-.mvp-display p{color:#fff;font-size:14px;font-weight:700}
-/* VOTS */
+
+/* SHIRT PREVIEW */
+.shirt-preview{display:flex;align-items:center;gap:16px;background:#1a5c2e;border-radius:8px;padding:14px;margin-bottom:12px}
+.shirt-preview svg{width:50px;height:56px}
+.shirt-preview-label{font-size:11px;color:#fff;opacity:0.7}
+
+/* VOTE */
 .vg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .vc{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;padding:9px}
 .vn{color:#444;font-size:9px;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+.vote-status{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:8px;padding:14px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.vote-status-info{font-size:13px;color:#ccc}
+.vote-status-info strong{color:#fff}
+.btn-stop{background:#c0392b;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer}
+.btn-start{background:#27ae60;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer}
+.mvp-display{background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:8px;padding:12px;text-align:center;margin-bottom:12px}
+.mvp-display p{color:#fff;font-size:14px;font-weight:700}
+
+/* LOGO */
+.pos-btn{padding:5px 9px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;color:#777;font-size:10px;cursor:pointer;transition:all 0.2s}
+.pos-btn.active{background:#00e676;color:#000;border-color:#00e676}
+.size-btn{padding:4px 9px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;color:#777;font-size:11px;cursor:pointer;transition:all 0.2s}
+.size-btn.active{background:#00e676;color:#000;border-color:#00e676}
+
 /* SUBMIT */
 .submit-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(17,17,17,0.97);border-top:1px solid #1e1e1e;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;z-index:200;backdrop-filter:blur(10px)}
 .btn-c{background:#1a1a1a;color:#777;border:1px solid #2a2a2a;border-radius:6px;padding:8px 16px;font-size:12px;cursor:pointer;text-decoration:none}
 .btn-s{background:#00e676;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;border:none;border-radius:6px;padding:8px 28px;cursor:pointer}
 .btn-s:hover{background:#00c853}
-/* LOGO PREVIEW */
-.logo-preview-wrap{display:flex;gap:12px;align-items:center;margin-top:8px}
-.logo-preview-img{width:60px;height:60px;object-fit:contain;border-radius:8px;border:1px solid #2a2a2a;background:#1a1a1a}
-.pos-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;width:90px}
-.pos-btn{padding:5px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;color:#777;font-size:10px;cursor:pointer;text-align:center;transition:all 0.2s}
-.pos-btn.active{background:#00e676;color:#000;border-color:#00e676}
-.size-sel{display:flex;gap:4px;margin-top:6px}
-.size-btn{padding:4px 9px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;color:#777;font-size:11px;cursor:pointer;transition:all 0.2s}
-.size-btn.active{background:#00e676;color:#000;border-color:#00e676}
 </style>
 </head>
 <body>
@@ -104,6 +118,7 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 
 <div class="tabs">
   <button type="button" class="tab active" onclick="sp('info')">⚙️ Info</button>
+  <button type="button" class="tab" onclick="sp('colors')">🎨 Culori Pagini</button>
   <button type="button" class="tab" onclick="sp('p1')">P1 Copertă</button>
   <button type="button" class="tab" onclick="sp('p2')">P2 Cuprins</button>
   <button type="button" class="tab" onclick="sp('p34')">P3-4 Avancronica</button>
@@ -133,59 +148,59 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
       <div class="f"><label>Competiție</label><input type="text" name="competition" value="<%=mag?mag.competition:''%>"></div>
     </div>
   </div>
-
-  <div class="sec"><div class="sec-title">🎨 CULORI GAZDE</div>
-    <div class="hint">💡 Bifează doar culorile pe care le folosești. Culoarea 1 e obligatorie.</div>
-    <div class="color-row">
-      <input type="color" name="homeColor1" value="<%=mag?mag.homeColor1:'#e63946'%>">
-      <label>Culoare 1 (principală – obligatorie)</label>
-    </div>
-    <div class="color-row">
-      <input type="color" name="homeColor2" value="<%=mag&&mag.homeColor2?mag.homeColor2:'#ffffff'%>" id="hc2col">
-      <label>Culoare 2</label>
-      <input type="checkbox" name="useHomeColor2" id="useHC2" <%=mag&&mag.homeColor2?'checked':''%> onchange="document.getElementById('hc2col').disabled=!this.checked">
-    </div>
-    <div class="color-row">
-      <input type="color" name="homeColor3" value="<%=mag&&mag.homeColor3?mag.homeColor3:'#1d3557'%>" id="hc3col">
-      <label>Culoare 3</label>
-      <input type="checkbox" name="useHomeColor3" id="useHC3" <%=mag&&mag.homeColor3?'checked':''%> onchange="document.getElementById('hc3col').disabled=!this.checked">
-    </div>
-  </div>
-
-  <div class="sec"><div class="sec-title">🎨 CULORI OASPETE</div>
-    <div class="color-row">
-      <input type="color" name="awayColor1" value="<%=mag?mag.awayColor1:'#457b9d'%>">
-      <label>Culoare 1 (principală – obligatorie)</label>
-    </div>
-    <div class="color-row">
-      <input type="color" name="awayColor2" value="<%=mag&&mag.awayColor2?mag.awayColor2:'#ffffff'%>" id="ac2col">
-      <label>Culoare 2</label>
-      <input type="checkbox" name="useAwayColor2" id="useAC2" <%=mag&&mag.awayColor2?'checked':''%> onchange="document.getElementById('ac2col').disabled=!this.checked">
-    </div>
-    <div class="color-row">
-      <input type="color" name="awayColor3" value="<%=mag&&mag.awayColor3?mag.awayColor3:'#1d3557'%>" id="ac3col">
-      <label>Culoare 3</label>
-      <input type="checkbox" name="useAwayColor3" id="useAC3" <%=mag&&mag.awayColor3?'checked':''%> onchange="document.getElementById('ac3col').disabled=!this.checked">
-    </div>
-  </div>
-
-  <div class="sec"><div class="sec-title">🖌️ CULOARE FUNDAL REVISTĂ</div>
+  <div class="sec"><div class="sec-title">🎨 CULORI ECHIPE (folosite în accent/design)</div>
     <div class="row2">
-      <div class="f"><label>Culoare Background</label><input type="color" name="bgColor" value="<%=mag?mag.bgColor||'#0d0d0d':'#0d0d0d'%>"></div>
-      <div class="f"><label>Culoare Text pe Background</label><input type="color" name="bgTextColor" value="<%=mag?mag.bgTextColor||'#ffffff':'#ffffff'%>"></div>
+      <div>
+        <div class="hint" style="margin-bottom:8px">Gazde</div>
+        <div class="color-row"><input type="color" name="homeColor1" value="<%=mag?mag.homeColor1:'#e63946'%>"><label>Culoare 1 (principală)</label></div>
+        <div class="color-row"><input type="color" name="homeColor2" value="<%=mag&&mag.homeColor2?mag.homeColor2:'#ffffff'%>"><label>Culoare 2</label><input type="checkbox" name="useHomeColor2" <%=mag&&mag.homeColor2?'checked':''%>></div>
+        <div class="color-row"><input type="color" name="homeColor3" value="<%=mag&&mag.homeColor3?mag.homeColor3:'#1d3557'%>"><label>Culoare 3</label><input type="checkbox" name="useHomeColor3" <%=mag&&mag.homeColor3?'checked':''%>></div>
+      </div>
+      <div>
+        <div class="hint" style="margin-bottom:8px">Oaspete</div>
+        <div class="color-row"><input type="color" name="awayColor1" value="<%=mag?mag.awayColor1:'#457b9d'%>"><label>Culoare 1 (principală)</label></div>
+        <div class="color-row"><input type="color" name="awayColor2" value="<%=mag&&mag.awayColor2?mag.awayColor2:'#ffffff'%>"><label>Culoare 2</label><input type="checkbox" name="useAwayColor2" <%=mag&&mag.awayColor2?'checked':''%>></div>
+        <div class="color-row"><input type="color" name="awayColor3" value="<%=mag&&mag.awayColor3?mag.awayColor3:'#1d3557'%>"><label>Culoare 3</label><input type="checkbox" name="useAwayColor3" <%=mag&&mag.awayColor3?'checked':''%>></div>
+      </div>
     </div>
-    <div class="hint">💡 Ex: background alb (#ffffff) + text negru (#000000). Sau background închis + text alb.</div>
+  </div>
+</div>
+
+<!-- COLORS PER PAGE -->
+<div class="panel" id="panel-colors">
+  <div class="sec"><div class="sec-title">🎨 CULORI FUNDAL + TEXT – FIECARE PAGINĂ</div>
+    <div class="hint">💡 Setează individual background-ul și culoarea textului pentru fiecare pagină. Default: negru + alb.</div>
+    <%
+    const pageNames=['Copertă','Cuprins','Avancronica 1','Avancronica 2','Jucător – Foto','Jucător – Text','Clasament','Formații','Rezerve','H2H','Antrenori','Palmares','Reclamă','Vot','Promo','Program'];
+    const savedBg=mag&&mag.pageBg?mag.pageBg:[];
+    const savedFg=mag&&mag.pageFg?mag.pageFg:[];
+    %>
+    <div class="page-color-grid">
+      <% for(let i=1;i<=16;i++){ %>
+      <div class="page-color-row">
+        <div class="page-color-num"><%=i%></div>
+        <div class="page-color-name"><%=pageNames[i-1]%></div>
+        <div class="page-color-pair">
+          <label>BG</label>
+          <input type="color" name="pageBg_<%=i%>" value="<%=savedBg[i-1]||'#0d0d0d'%>">
+          <label>TX</label>
+          <input type="color" name="pageFg_<%=i%>" value="<%=savedFg[i-1]||'#ffffff'%>">
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button type="button" class="btn-add" onclick="resetAllColors('#0d0d0d','#ffffff')">🌙 Toate negru+alb</button>
+      <button type="button" class="btn-add" onclick="resetAllColors('#ffffff','#111111')">☀️ Toate alb+negru</button>
+    </div>
   </div>
 </div>
 
 <!-- P1 -->
 <div class="panel" id="panel-p1">
   <div class="sec"><div class="sec-title">📖 COPERTĂ</div>
-    <div class="f"><label>Titlu</label>
-      <input type="text" name="coverTitle" value="<%=mag?mag.coverTitle:''%>" oninput="cc(this,40,'cc-ct')">
-      <div class="cc" id="cc-ct">ghid: 40 caractere</div>
-    </div>
-    <div class="f"><label>Fotografie copertă (9:16 recomandat)</label>
+    <div class="f"><label>Titlu</label><input type="text" name="coverTitle" value="<%=mag?mag.coverTitle:''%>" oninput="cc(this,40,'cc-ct')"><div class="cc" id="cc-ct">ghid: 40</div></div>
+    <div class="f"><label>Fotografie (9:16)</label>
       <%if(mag&&mag.cover){%><img src="<%=mag.cover%>" class="ci"><%}%>
       <div class="fu" onclick="document.getElementById('i-cover').click()">
         <input type="file" id="i-cover" name="cover" accept="image/*" onchange="sf(this,'fn-cover')">
@@ -194,29 +209,28 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
       </div>
     </div>
   </div>
-
-  <div class="sec"><div class="sec-title">🏟️ EMBLEMĂ CLUB (apare pe copertă + toate paginile)</div>
+  <div class="sec"><div class="sec-title">🏟️ EMBLEMĂ CLUB</div>
     <div class="f">
       <%if(mag&&mag.clubLogo){%><img src="<%=mag.clubLogo%>" style="width:70px;height:70px;object-fit:contain;border-radius:8px;border:1px solid #2a2a2a;background:#1a1a1a;display:block;margin-bottom:8px"><%}%>
       <div class="fu" onclick="document.getElementById('i-clogo').click()">
-        <input type="file" id="i-clogo" name="clubLogo" accept="image/*" onchange="sf(this,'fn-clogo');previewLogo(this)">
-        <div class="fu-lbl">📷 Încarcă emblema clubului (PNG cu fundal transparent ideal)</div>
+        <input type="file" id="i-clogo" name="clubLogo" accept="image/*" onchange="sf(this,'fn-clogo')">
+        <div class="fu-lbl">📷 PNG cu fundal transparent recomandat</div>
         <div class="fn" id="fn-clogo"><%=mag&&mag.clubLogo?'✅ Existentă':''%></div>
       </div>
     </div>
     <div class="f"><label>Poziție pe copertă</label>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
-        <% [['top-left','↖ Sus Stânga'],['top-center','↑ Sus Centru'],['top-right','↗ Sus Dreapta']].forEach(function(p){ %>
+        <%[['top-left','↖ Sus St.'],['top-center','↑ Sus C.'],['top-right','↗ Sus Dr.']].forEach(function(p){%>
         <button type="button" class="pos-btn <%=(mag&&mag.logoPosition===p[0])||(!mag&&p[0]==='top-left')?'active':''%>" onclick="selPos('<%=p[0]%>')"><%=p[1]%></button>
-        <% }) %>
+        <%})%>
       </div>
       <input type="hidden" name="logoPosition" id="logoPosVal" value="<%=mag?mag.logoPosition||'top-left':'top-left'%>">
     </div>
     <div class="f"><label>Dimensiune pe copertă</label>
-      <div class="size-sel">
-        <% [['small','Mică'],['medium','Medie'],['large','Mare']].forEach(function(s){ %>
+      <div style="display:flex;gap:6px;margin-top:4px">
+        <%[['small','Mică'],['medium','Medie'],['large','Mare']].forEach(function(s){%>
         <button type="button" class="size-btn <%=(mag&&mag.logoSize===s[0])||(!mag&&s[0]==='medium')?'active':''%>" onclick="selSize('<%=s[0]%>')"><%=s[1]%></button>
-        <% }) %>
+        <%})%>
       </div>
       <input type="hidden" name="logoSize" id="logoSizeVal" value="<%=mag?mag.logoSize||'medium':'medium'%>">
     </div>
@@ -226,20 +240,14 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 <!-- P2 TOC -->
 <div class="panel" id="panel-p2">
   <div class="sec"><div class="sec-title">📋 CUPRINS</div>
-    <div class="hint">💡 Editează titlurile. Cititorii pot apăsa pe orice rând pentru a naviga direct.</div>
-    <% const tocDefs=[
-      {pg:'2',lbl:'Cuprins'},{pg:'3-4',lbl:'Avancronica'},{pg:'5-6',lbl:'Jucător Cheie'},
-      {pg:'7',lbl:'Clasament'},{pg:'8',lbl:'Formații de Start'},{pg:'9',lbl:'Rezerve'},
-      {pg:'10',lbl:'Head to Head'},{pg:'11',lbl:'Ce spun antrenorii'},{pg:'12',lbl:'Palmares'},
-      {pg:'13',lbl:'Reclamă'},{pg:'14',lbl:'Jucătorul Meciului'},{pg:'15',lbl:'Promo'},{pg:'16',lbl:'Program'}
-    ]; %>
-    <% const savedToc=mag&&mag.tocItems?mag.tocItems:[]; %>
-    <% tocDefs.forEach(function(def,i){ %>
+    <%const tocDefs=[{pg:'2',lbl:'Cuprins'},{pg:'3-4',lbl:'Avancronica'},{pg:'5-6',lbl:'Jucător Cheie'},{pg:'7',lbl:'Clasament'},{pg:'8',lbl:'Formații de Start'},{pg:'9',lbl:'Rezerve'},{pg:'10',lbl:'Head to Head'},{pg:'11',lbl:'Ce spun antrenorii'},{pg:'12',lbl:'Palmares'},{pg:'13',lbl:'Reclamă'},{pg:'14',lbl:'Jucătorul Meciului'},{pg:'15',lbl:'Promo'},{pg:'16',lbl:'Program'}];%>
+    <%const savedToc=mag&&mag.tocItems?mag.tocItems:[];%>
+    <%tocDefs.forEach(function(def,i){%>
     <div class="toc-row">
       <div class="toc-pg"><%=def.pg%></div>
-      <input type="text" name="tocItem" value="<%=savedToc[i]||def.lbl%>" placeholder="<%=def.lbl%>">
+      <input type="text" name="tocItem" value="<%=savedToc[i]||def.lbl%>">
     </div>
-    <% }) %>
+    <%})%>
   </div>
 </div>
 
@@ -247,8 +255,8 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 <div class="panel" id="panel-p34">
   <div class="sec"><div class="sec-title">📝 AVANCRONICA</div>
     <div class="f"><label>Titlu</label><input type="text" name="avancronicaTitle" value="<%=mag?mag.avancronicaTitle:'Avancronica'%>"></div>
-    <div class="f"><label>Pagina 3</label><textarea name="avancronicaP1" rows="8" oninput="cc(this,600,'cc-ap1')"><%=mag?mag.avancronicaP1:''%></textarea><div class="cc" id="cc-ap1">ghid: 600 caractere</div></div>
-    <div class="f"><label>Pagina 4</label><textarea name="avancronicaP2" rows="8" oninput="cc(this,600,'cc-ap2')"><%=mag?mag.avancronicaP2:''%></textarea><div class="cc" id="cc-ap2">ghid: 600 caractere</div></div>
+    <div class="f"><label>Pagina 3</label><textarea name="avancronicaP1" rows="8" oninput="cc(this,600,'cc-ap1')"><%=mag?mag.avancronicaP1:''%></textarea><div class="cc" id="cc-ap1">ghid: 600</div></div>
+    <div class="f"><label>Pagina 4</label><textarea name="avancronicaP2" rows="8" oninput="cc(this,600,'cc-ap2')"><%=mag?mag.avancronicaP2:''%></textarea><div class="cc" id="cc-ap2">ghid: 600</div></div>
   </div>
 </div>
 
@@ -264,10 +272,10 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
       </div>
     </div>
     <div class="row2">
-      <div class="f"><label>Nume jucător</label><input type="text" name="playerTitle" value="<%=mag?mag.playerTitle:''%>" oninput="cc(this,30,'cc-pn')"><div class="cc" id="cc-pn">ghid: 30</div></div>
-      <div class="f"><label>Subtitlu / Poziție</label><input type="text" name="playerSubtitle" value="<%=mag?mag.playerSubtitle:''%>" oninput="cc(this,60,'cc-ps')"><div class="cc" id="cc-ps">ghid: 60</div></div>
+      <div class="f"><label>Nume</label><input type="text" name="playerTitle" value="<%=mag?mag.playerTitle:''%>" oninput="cc(this,30,'cc-pn')"><div class="cc" id="cc-pn">ghid: 30</div></div>
+      <div class="f"><label>Subtitlu</label><input type="text" name="playerSubtitle" value="<%=mag?mag.playerSubtitle:''%>" oninput="cc(this,60,'cc-ps')"><div class="cc" id="cc-ps">ghid: 60</div></div>
     </div>
-    <div class="f"><label>Text</label><textarea name="playerText" rows="8" oninput="cc(this,600,'cc-ptx')"><%=mag?mag.playerText:''%></textarea><div class="cc" id="cc-ptx">ghid: 600 caractere</div></div>
+    <div class="f"><label>Text</label><textarea name="playerText" rows="8" oninput="cc(this,600,'cc-ptx')"><%=mag?mag.playerText:''%></textarea><div class="cc" id="cc-ptx">ghid: 600</div></div>
   </div>
 </div>
 
@@ -275,56 +283,101 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 <div class="panel" id="panel-p7">
   <div class="sec"><div class="sec-title">🏆 CLASAMENT</div>
     <div class="f"><label>Titlu</label><input type="text" name="standingsTitle" value="<%=mag?mag.standingsTitle:'Clasament'%>"></div>
-    <div class="hint">💡 Recomandat: <strong>SofaScore</strong> pentru embed mai curat pe mobil. Mergi la sofascore.com → Liga → Clasament → Share → Embed. Alternativ Flashscore.</div>
+    <div class="hint">💡 Recomandat: <strong>SofaScore embed</strong> – mai curat pe mobil. Sau Flashscore.</div>
     <div class="f"><label>Cod Embed</label><textarea name="standingsEmbed" rows="4"><%=mag?mag.standingsEmbed:''%></textarea></div>
   </div>
 </div>
 
 <!-- P8 FORMATIONS -->
 <div class="panel" id="panel-p8">
-  <div class="sec"><div class="sec-title">⚽ FORMAȚII – GAZDE</div>
+  <div class="sec"><div class="sec-title">⚽ TITLU + TRICOURI</div>
+    <div class="f"><label>Text titlu sus (ex: "Formații probabile" sau "UPDATE: Formații de start")</label>
+      <input type="text" name="formationTitle" value="<%=mag?mag.formationTitle||'Formații probabile':'Formații probabile'%>">
+    </div>
     <div class="row2">
-      <div class="f"><label>Titlu</label><input type="text" name="homeFormationTitle" value="<%=mag?mag.homeFormationTitle:''%>"></div>
-      <div class="f"><label>Logo</label>
-        <%if(mag&&mag.homeLogoPhoto){%><img src="<%=mag.homeLogoPhoto%>" class="ci" style="max-height:44px;object-fit:contain"><%}%>
-        <div class="fu" onclick="document.getElementById('i-hl').click()" style="padding:8px">
-          <input type="file" id="i-hl" name="homeLogoPhoto" accept="image/*" onchange="sf(this,'fn-hl')">
-          <div class="fu-lbl" style="font-size:10px">📷 Logo</div>
-          <div class="fn" id="fn-hl"><%=mag&&mag.homeLogoPhoto?'✅':''%></div>
+      <div>
+        <div class="hint">Tricou GAZDE</div>
+        <div id="shirtPreviewHome" style="background:#2e8b45;border-radius:8px;padding:12px;display:flex;align-items:center;gap:14px;margin-bottom:10px">
+          <svg id="svgHome" viewBox="0 0 50 55" width="50" height="56">
+            <path id="shHome" d="M5,14 L0,28 L13,30 L13,54 L37,54 L37,30 L50,28 L45,14 L36,10 C34,16 16,16 14,10 Z" fill="#e63946" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+            <path id="clHome" d="M14,10 C16,16 34,16 36,10 L38,6 C34,2 30,0 25,0 C20,0 16,2 12,6 Z" fill="#1d3557" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+            <text x="25" y="36" text-anchor="middle" font-size="11" font-weight="900" id="numHome" fill="#ffffff">7</text>
+          </svg>
+          <div class="row4" style="flex:1">
+            <div class="f"><label>Tricou</label><input type="color" name="homeShirtColor" value="<%=mag?mag.homeShirtColor||'#e63946':'#e63946'%>" oninput="updateShirt('home','sh',this.value)"></div>
+            <div class="f"><label>Guler</label><input type="color" name="homeCollarColor" value="<%=mag?mag.homeCollarColor||'#1d3557':'#1d3557'%>" oninput="updateShirt('home','cl',this.value)"></div>
+            <div class="f"><label>Număr</label><input type="color" name="homeNumColor" value="<%=mag?mag.homeNumColor||'#ffffff':'#ffffff'%>" oninput="updateShirt('home','num',this.value)"></div>
+            <div class="f"><label>Nume</label><input type="color" name="homeNameColor" value="<%=mag?mag.homeNameColor||'#ffffff':'#ffffff'%>"></div>
+          </div>
+        </div>
+        <div class="f"><label>Formație Gazde</label>
+          <div class="form-sel" id="homeFrmSel">
+            <%['4-3-3','4-4-2','4-2-3-1','3-4-3','4-1-4-1','5-4-1','5-3-2'].forEach(f=>{%>
+              <button type="button" class="fb <%-((mag&&mag.homeFormation===f)||(!mag&&f==='4-3-3'))?'active':''%>" onclick="selForm('home','<%=f%>')"><%=f%></button>
+            <%})%>
+          </div>
+          <input type="hidden" name="homeFormation" id="homeFormVal" value="<%=mag?mag.homeFormation:'4-3-3'%>">
+        </div>
+        <div class="f"><label>Titlu echipă gazde</label><input type="text" name="homeFormationTitle" value="<%=mag?mag.homeFormationTitle:''%>"></div>
+        <div class="f"><label>Antrenor gazde (pe teren)</label><input type="text" name="homeCoachFormation" value="<%=mag?mag.homeCoachFormation:''%>" placeholder="ex: Mihai Teja">
+        </div>
+        <div class="f"><label>Logo</label>
+          <%if(mag&&mag.homeLogoPhoto){%><img src="<%=mag.homeLogoPhoto%>" class="ci" style="max-height:44px;object-fit:contain"><%}%>
+          <div class="fu" onclick="document.getElementById('i-hl').click()" style="padding:8px">
+            <input type="file" id="i-hl" name="homeLogoPhoto" accept="image/*" onchange="sf(this,'fn-hl')">
+            <div class="fu-lbl" style="font-size:10px">📷 Logo</div>
+            <div class="fn" id="fn-hl"><%=mag&&mag.homeLogoPhoto?'✅':''%></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="hint">Tricou OASPETE</div>
+        <div id="shirtPreviewAway" style="background:#2e8b45;border-radius:8px;padding:12px;display:flex;align-items:center;gap:14px;margin-bottom:10px">
+          <svg id="svgAway" viewBox="0 0 50 55" width="50" height="56">
+            <path id="shAway" d="M5,14 L0,28 L13,30 L13,54 L37,54 L37,30 L50,28 L45,14 L36,10 C34,16 16,16 14,10 Z" fill="#457b9d" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+            <path id="clAway" d="M14,10 C16,16 34,16 36,10 L38,6 C34,2 30,0 25,0 C20,0 16,2 12,6 Z" fill="#ffffff" stroke="rgba(0,0,0,0.2)" stroke-width="1.2"/>
+            <text x="25" y="36" text-anchor="middle" font-size="11" font-weight="900" id="numAway" fill="#ffffff">9</text>
+          </svg>
+          <div class="row4" style="flex:1">
+            <div class="f"><label>Tricou</label><input type="color" name="awayShirtColor" value="<%=mag?mag.awayShirtColor||'#457b9d':'#457b9d'%>" oninput="updateShirt('away','sh',this.value)"></div>
+            <div class="f"><label>Guler</label><input type="color" name="awayCollarColor" value="<%=mag?mag.awayCollarColor||'#ffffff':'#ffffff'%>" oninput="updateShirt('away','cl',this.value)"></div>
+            <div class="f"><label>Număr</label><input type="color" name="awayNumColor" value="<%=mag?mag.awayNumColor||'#ffffff':'#ffffff'%>" oninput="updateShirt('away','num',this.value)"></div>
+            <div class="f"><label>Nume</label><input type="color" name="awayNameColor" value="<%=mag?mag.awayNameColor||'#ffffff':'#ffffff'%>"></div>
+          </div>
+        </div>
+        <div class="f"><label>Formație Oaspete</label>
+          <div class="form-sel" id="awayFrmSel">
+            <%['4-3-3','4-4-2','4-2-3-1','3-4-3','4-1-4-1','5-4-1','5-3-2'].forEach(f=>{%>
+              <button type="button" class="fb <%-((mag&&mag.awayFormation===f)||(!mag&&f==='4-3-3'))?'active':''%>" onclick="selForm('away','<%=f%>')"><%=f%></button>
+            <%})%>
+          </div>
+          <input type="hidden" name="awayFormation" id="awayFormVal" value="<%=mag?mag.awayFormation:'4-3-3'%>">
+        </div>
+        <div class="f"><label>Titlu echipă oaspete</label><input type="text" name="awayFormationTitle" value="<%=mag?mag.awayFormationTitle:''%>"></div>
+        <div class="f"><label>Antrenor oaspete (pe teren)</label><input type="text" name="awayCoachFormation" value="<%=mag?mag.awayCoachFormation:''%>" placeholder="ex: Dorinel Munteanu"></div>
+        <div class="f"><label>Logo</label>
+          <%if(mag&&mag.awayLogoPhoto){%><img src="<%=mag.awayLogoPhoto%>" class="ci" style="max-height:44px;object-fit:contain"><%}%>
+          <div class="fu" onclick="document.getElementById('i-al').click()" style="padding:8px">
+            <input type="file" id="i-al" name="awayLogoPhoto" accept="image/*" onchange="sf(this,'fn-al')">
+            <div class="fu-lbl" style="font-size:10px">📷 Logo</div>
+            <div class="fn" id="fn-al"><%=mag&&mag.awayLogoPhoto?'✅':''%></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="f"><label>Formație</label>
-      <div class="form-sel" id="homeFrmSel">
-        <%['4-3-3','4-4-2','4-2-3-1','3-4-3','4-1-4-1','5-4-1','5-3-2'].forEach(f=>{%>
-          <button type="button" class="fb <%-((mag&&mag.homeFormation===f)||(!mag&&f==='4-3-3'))?'active':''%>" onclick="selForm('home','<%=f%>')"><%=f%></button>
-        <%})%>
-      </div>
-      <input type="hidden" name="homeFormation" id="homeFormVal" value="<%=mag?mag.homeFormation:'4-3-3'%>">
-    </div>
-    <div id="homePitch"></div>
+    <div class="hint">💡 Jucători: apasă tab P8 Jucători de mai jos</div>
   </div>
-  <div class="sec"><div class="sec-title">⚽ FORMAȚII – OASPETE</div>
+  <div class="sec"><div class="sec-title">⚽ JUCĂTORI</div>
     <div class="row2">
-      <div class="f"><label>Titlu</label><input type="text" name="awayFormationTitle" value="<%=mag?mag.awayFormationTitle:''%>"></div>
-      <div class="f"><label>Logo</label>
-        <%if(mag&&mag.awayLogoPhoto){%><img src="<%=mag.awayLogoPhoto%>" class="ci" style="max-height:44px;object-fit:contain"><%}%>
-        <div class="fu" onclick="document.getElementById('i-al').click()" style="padding:8px">
-          <input type="file" id="i-al" name="awayLogoPhoto" accept="image/*" onchange="sf(this,'fn-al')">
-          <div class="fu-lbl" style="font-size:10px">📷 Logo</div>
-          <div class="fn" id="fn-al"><%=mag&&mag.awayLogoPhoto?'✅':''%></div>
-        </div>
+      <div>
+        <div style="color:#c0392b;font-size:11px;font-weight:700;margin-bottom:8px">GAZDE</div>
+        <div id="homePitch"></div>
+      </div>
+      <div>
+        <div style="color:#27ae60;font-size:11px;font-weight:700;margin-bottom:8px">OASPETE</div>
+        <div id="awayPitch"></div>
       </div>
     </div>
-    <div class="f"><label>Formație</label>
-      <div class="form-sel" id="awayFrmSel">
-        <%['4-3-3','4-4-2','4-2-3-1','3-4-3','4-1-4-1','5-4-1','5-3-2'].forEach(f=>{%>
-          <button type="button" class="fb <%-((mag&&mag.awayFormation===f)||(!mag&&f==='4-3-3'))?'active':''%>" onclick="selForm('away','<%=f%>')"><%=f%></button>
-        <%})%>
-      </div>
-      <input type="hidden" name="awayFormation" id="awayFormVal" value="<%=mag?mag.awayFormation:'4-3-3'%>">
-    </div>
-    <div id="awayPitch"></div>
   </div>
 </div>
 
@@ -343,15 +396,15 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
   <div class="sec"><div class="sec-title">📊 HEAD TO HEAD</div>
     <div class="f"><label>Titlu</label><input type="text" name="h2hTitle" value="<%=mag?mag.h2hTitle:'Întâlniri directe'%>"></div>
     <div id="h2hRows">
-      <% const h2hL=mag&&mag.h2hLabels?mag.h2hLabels:['Victorii gazde','Egal','Victorii oaspete']; %>
-      <% const h2hV=mag&&mag.h2hValues?mag.h2hValues:['0','0','0']; %>
-      <% h2hL.forEach(function(lbl,i){ %>
+      <%const h2hL=mag&&mag.h2hLabels?mag.h2hLabels:['Victorii gazde','Egal','Victorii oaspete'];%>
+      <%const h2hV=mag&&mag.h2hValues?mag.h2hValues:['0','0','0'];%>
+      <%h2hL.forEach(function(lbl,i){%>
       <div class="h2h-row" id="h2hr-<%=i%>">
         <input type="text" name="h2hLabel" value="<%=lbl%>" placeholder="Label">
         <input type="text" name="h2hValue" value="<%=h2hV[i]||''%>" placeholder="0">
         <button type="button" class="btn-rem" onclick="remH2H(<%=i%>)">✕</button>
       </div>
-      <% }) %>
+      <%})%>
     </div>
     <button type="button" class="btn-add" onclick="addH2H()" style="margin-top:8px">+ Adaugă rând</button>
     <div class="f" style="margin-top:12px"><label>Embed YouTube</label><textarea name="h2hYoutubeEmbed" rows="3"><%=mag?mag.h2hYoutubeEmbed:''%></textarea></div>
@@ -361,11 +414,11 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 <!-- P11 -->
 <div class="panel" id="panel-p11">
   <div class="sec"><div class="sec-title">💬 CE SPUN ANTRENORII</div>
-    <div class="f"><label>Titlu secțiune</label><input type="text" name="coachesTitle" value="<%=mag?mag.coachesTitle:'Ce spun antrenorii'%>"></div>
+    <div class="f"><label>Titlu</label><input type="text" name="coachesTitle" value="<%=mag?mag.coachesTitle:'Ce spun antrenorii'%>"></div>
     <div class="row2">
       <div class="f">
-        <label style="color:#c0392b">▶ ANTRENOR GAZDE</label>
-        <%if(mag&&mag.homeCoachPhoto){%><img src="<%=mag.homeCoachPhoto%>" class="ci" style="max-height:80px;object-fit:cover;border-radius:6px;border:2px solid #c0392b"><%}%>
+        <label style="color:#c0392b">▶ GAZDE</label>
+        <%if(mag&&mag.homeCoachPhoto){%><img src="<%=mag.homeCoachPhoto%>" class="ci" style="max-height:70px;object-fit:cover;border:2px solid #c0392b;border-radius:6px"><%}%>
         <div class="fu" onclick="document.getElementById('i-hc').click()" style="padding:9px">
           <input type="file" id="i-hc" name="homeCoachPhoto" accept="image/*" onchange="sf(this,'fn-hc')">
           <div class="fu-lbl" style="font-size:10px">📷 Poză antrenor</div>
@@ -375,8 +428,8 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
         <div class="f"><label>Declarație</label><textarea name="homeCoachText" rows="5" oninput="cc(this,300,'cc-hct')"><%=mag?mag.homeCoachText:''%></textarea><div class="cc" id="cc-hct">ghid: 300</div></div>
       </div>
       <div class="f">
-        <label style="color:#27ae60">▶ ANTRENOR OASPETE</label>
-        <%if(mag&&mag.awayCoachPhoto){%><img src="<%=mag.awayCoachPhoto%>" class="ci" style="max-height:80px;object-fit:cover;border-radius:6px;border:2px solid #27ae60"><%}%>
+        <label style="color:#27ae60">▶ OASPETE</label>
+        <%if(mag&&mag.awayCoachPhoto){%><img src="<%=mag.awayCoachPhoto%>" class="ci" style="max-height:70px;object-fit:cover;border:2px solid #27ae60;border-radius:6px"><%}%>
         <div class="fu" onclick="document.getElementById('i-ac').click()" style="padding:9px">
           <input type="file" id="i-ac" name="awayCoachPhoto" accept="image/*" onchange="sf(this,'fn-ac')">
           <div class="fu-lbl" style="font-size:10px">📷 Poză antrenor</div>
@@ -397,11 +450,11 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
       <%if(mag&&mag.palmaresPhoto){%><img src="<%=mag.palmaresPhoto%>" class="ci"><%}%>
       <div class="fu" onclick="document.getElementById('i-palm').click()">
         <input type="file" id="i-palm" name="palmaresPhoto" accept="image/*" onchange="sf(this,'fn-palm')">
-        <div class="fu-lbl">📷 Poză portret (jucător cu trofeu)</div>
+        <div class="fu-lbl">📷 Portret (jucător cu trofeu)</div>
         <div class="fn" id="fn-palm"><%=mag&&mag.palmaresPhoto?'✅ Existentă':''%></div>
       </div>
     </div>
-    <div class="f"><label>Text</label><textarea name="palmaresText" rows="8" oninput="cc(this,800,'cc-palm')"><%=mag?mag.palmaresText:''%></textarea><div class="cc" id="cc-palm">ghid: 800 caractere</div></div>
+    <div class="f"><label>Text</label><textarea name="palmaresText" rows="8" oninput="cc(this,800,'cc-palm')"><%=mag?mag.palmaresText:''%></textarea><div class="cc" id="cc-palm">ghid: 800</div></div>
   </div>
 </div>
 
@@ -415,22 +468,22 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 
 <!-- P14 VOTE -->
 <div class="panel" id="panel-p14">
-  <% if(mag) { %>
+  <%if(mag){%>
   <div class="sec"><div class="sec-title">🎛️ CONTROL VOT LIVE</div>
-    <% if(mag.voteStopped) { %>
+    <%if(mag.voteStopped){%>
     <div class="mvp-display"><p>🏆 Votul s-a încheiat · MVP: <strong><%=mag.mvp||'–'%></strong></p></div>
     <div class="vote-status">
-      <div class="vote-status-info">Votul este <strong>OPRIT</strong>. MVP afișat cititorilor.</div>
+      <div class="vote-status-info">Votul este <strong>OPRIT</strong></div>
       <button type="button" class="btn-start" onclick="startVote()">▶ Redeschide vot</button>
     </div>
-    <% } else { %>
+    <%}else{%>
     <div class="vote-status">
-      <div class="vote-status-info">Votul este <strong>ACTIV</strong> · Apasă Stop când meciul se termină</div>
-      <button type="button" class="btn-stop" onclick="stopVote()">⏹ STOP VOT</button>
+      <div class="vote-status-info">Votul este <strong>ACTIV</strong></div>
+      <button type="button" class="btn-stop" onclick="stopVote()">⏹ STOP VOT + MVP</button>
     </div>
-    <% } %>
+    <%}%>
   </div>
-  <% } %>
+  <%}%>
   <div class="sec"><div class="sec-title">🗳️ CANDIDAȚI</div>
     <div class="vg">
       <div class="vc"><div class="vn">Candidat 1</div><input type="text" name="voteCandidate0" value="<%=mag?mag.voteCandidate0:''%>" placeholder="Nume jucător"></div>
@@ -443,7 +496,6 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 <!-- P15 -->
 <div class="panel" id="panel-p15">
   <div class="sec"><div class="sec-title">📣 BANNER PROMO</div>
-    <div class="hint">💡 Introdu codul embed de la casa de pariuri sau sponsor (banner orizontal)</div>
     <div class="f"><label>Cod Embed Banner</label><textarea name="promoEmbed" rows="5"><%=mag?mag.promoEmbed:''%></textarea></div>
   </div>
 </div>
@@ -460,14 +512,14 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
       </div>
     </div>
     <div class="f"><label>Titlu</label><input type="text" name="programTitle" value="<%=mag?mag.programTitle:'Programul echipei noastre'%>"></div>
-    <div class="f"><label>Text</label><textarea name="programText" rows="6" oninput="cc(this,400,'cc-prog')"><%=mag?mag.programText:''%></textarea><div class="cc" id="cc-prog">ghid: 400 caractere</div></div>
+    <div class="f"><label>Text</label><textarea name="programText" rows="6" oninput="cc(this,400,'cc-prog')"><%=mag?mag.programText:''%></textarea><div class="cc" id="cc-prog">ghid: 400</div></div>
   </div>
 </div>
 
 <div id="hiddenPlayers"></div>
 
 <div class="submit-bar">
-  <span style="color:#444;font-size:11px">16 pagini · emblema club · vot live</span>
+  <span style="color:#444;font-size:11px">16 pagini · culori per pagină · teren unificat</span>
   <div style="display:flex;gap:8px">
     <a href="/admin" class="btn-c">Anulează</a>
     <button type="submit" class="btn-s">💾 SALVEAZĂ</button>
@@ -478,15 +530,7 @@ input:focus,textarea:focus,select:focus{border-color:#00e676}
 
 <script>
 const MAG_ID='<%=mag?mag.id:null%>';
-const FORMATIONS={
-  '4-3-3':[[1],[4,3,2,5],[8,6,10],[9,7,11]],
-  '4-4-2':[[1],[2,3,4,5],[6,7,8,9],[10,11]],
-  '4-2-3-1':[[1],[2,3,4,5],[6,8],[7,10,11],[9]],
-  '3-4-3':[[1],[2,5,3],[4,6,8,7],[9,10,11]],
-  '4-1-4-1':[[1],[2,3,4,5],[6],[7,8,9,10],[11]],
-  '5-4-1':[[1],[2,3,5,4,6],[7,8,9,10],[11]],
-  '5-3-2':[[1],[2,3,5,4,6],[7,8,9],[10,11]]
-};
+const FORMATIONS={'4-3-3':[[1],[4,3,2,5],[8,6,10],[9,7,11]],'4-4-2':[[1],[2,3,4,5],[6,7,8,9],[10,11]],'4-2-3-1':[[1],[2,3,4,5],[6,8],[7,10,11],[9]],'3-4-3':[[1],[2,5,3],[4,6,8,7],[9,10,11]],'4-1-4-1':[[1],[2,3,4,5],[6],[7,8,9,10],[11]],'5-4-1':[[1],[2,3,5,4,6],[7,8,9,10],[11]],'5-3-2':[[1],[2,3,5,4,6],[7,8,9],[10,11]]};
 const eHN=<%- JSON.stringify(mag&&mag.homePlayerNumbers?mag.homePlayerNumbers:Array(11).fill('')) %>;
 const eHNm=<%- JSON.stringify(mag&&mag.homePlayerNames?mag.homePlayerNames:Array(11).fill('')) %>;
 const eAN=<%- JSON.stringify(mag&&mag.awayPlayerNumbers?mag.awayPlayerNumbers:Array(11).fill('')) %>;
@@ -511,17 +555,13 @@ function renderPitch(team){
   const rows=FORMATIONS[f]||FORMATIONS['4-3-3'];
   const d=team==='home'?hD:aD;
   const col=team==='home'?'#c0392b':'#27ae60';
-  const cls=team==='home'?'home-pa':'away-pa';
   const rev=[...rows].reverse();
-  let idx=0,html=`<div class="pitch-a ${cls}">`;
+  let idx=0,html=`<div class="pitch-a ${team==='home'?'home-pa':'away-pa'}">`;
   rev.forEach(row=>{
     html+=`<div class="prow">`;
     row.forEach(()=>{
       const n=d.nums[idx]||'';const nm=d.names[idx]||'';const i=idx;
-      html+=`<div class="pa"><div class="pinputs">
-        <input class="ni" type="text" placeholder="#" value="${n.replace(/"/g,'&quot;')}" maxlength="2" oninput="upd('${team}',${i},'n',this.value)">
-        <input class="nmi" type="text" placeholder="Nume" value="${nm.replace(/"/g,'&quot;')}" oninput="upd('${team}',${i},'nm',this.value)">
-      </div></div>`;
+      html+=`<div class="pa"><div class="pinputs"><input class="ni" type="text" placeholder="#" value="${n.replace(/"/g,'&quot;')}" maxlength="2" oninput="upd('${team}',${i},'n',this.value)"><input class="nmi" type="text" placeholder="Nume" value="${nm.replace(/"/g,'&quot;')}" oninput="upd('${team}',${i},'nm',this.value)"></div></div>`;
       idx++;
     });
     html+=`</div>`;
@@ -541,6 +581,15 @@ function syncH(){
   }
   document.getElementById('hiddenPlayers').innerHTML=h;
 }
+
+// Shirt live preview in admin
+function updateShirt(team, part, val){
+  const el=document.getElementById((part==='sh'?'sh':(part==='cl'?'cl':'num'))+team.charAt(0).toUpperCase()+team.slice(1));
+  if(!el)return;
+  if(part==='num')el.setAttribute('fill',val);
+  else el.setAttribute('fill',val);
+}
+
 let h2hCount=document.querySelectorAll('.h2h-row').length;
 function addH2H(){
   const c=document.getElementById('h2hRows');
@@ -553,38 +602,32 @@ function sf(input,nameId){if(input.files&&input.files[0])document.getElementById
 function cc(el,guide,id){
   const len=el.value.length,el2=document.getElementById(id);
   if(!el2)return;
-  el2.textContent=`${len} caractere (ghid: ${guide})`;
+  el2.textContent=`${len} (ghid: ${guide})`;
   el2.className='cc'+(len>guide*1.5?' warn':'');
 }
 function selPos(p){
   document.getElementById('logoPosVal').value=p;
-  document.querySelectorAll('.pos-btn').forEach(b=>b.classList.toggle('active',b.onclick.toString().includes("'"+p+"'")));
+  document.querySelectorAll('.pos-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes("'"+p+"'")));
 }
 function selSize(s){
   document.getElementById('logoSizeVal').value=s;
-  document.querySelectorAll('.size-btn').forEach(b=>b.classList.toggle('active',b.onclick.toString().includes("'"+s+"'")));
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes("'"+s+"'")));
 }
-function previewLogo(input){
-  if(input.files&&input.files[0]){
-    const r=new FileReader();r.onload=e=>{
-      let img=document.querySelector('.logo-preview-img');
-      if(!img){img=document.createElement('img');img.className='logo-preview-img';input.closest('.fu').before(img);}
-      img.src=e.target.result;
-    };r.readAsDataURL(input.files[0]);
+function resetAllColors(bg, fg){
+  for(let i=1;i<=16;i++){
+    const bgEl=document.querySelector(`input[name="pageBg_${i}"]`);
+    const fgEl=document.querySelector(`input[name="pageFg_${i}"]`);
+    if(bgEl)bgEl.value=bg;
+    if(fgEl)fgEl.value=fg;
   }
 }
-// VOTE CONTROL
 function stopVote(){
-  if(!MAG_ID||!confirm('Oprești votul? MVP va fi afișat automat.'))return;
-  fetch(`/admin/stop-vote/${MAG_ID}`,{method:'POST'}).then(r=>r.json()).then(d=>{
-    if(d.success)location.reload();
-  });
+  if(!MAG_ID||!confirm('Oprești votul? MVP va fi afișat automat cititorilor.'))return;
+  fetch(`/admin/stop-vote/${MAG_ID}`,{method:'POST'}).then(r=>r.json()).then(d=>{if(d.success)location.reload();});
 }
 function startVote(){
   if(!MAG_ID)return;
-  fetch(`/admin/start-vote/${MAG_ID}`,{method:'POST'}).then(r=>r.json()).then(d=>{
-    if(d.success)location.reload();
-  });
+  fetch(`/admin/start-vote/${MAG_ID}`,{method:'POST'}).then(r=>r.json()).then(d=>{if(d.success)location.reload();});
 }
 syncH();
 </script>
