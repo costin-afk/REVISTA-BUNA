@@ -21,16 +21,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .page::-webkit-scrollbar{display:none}
 
 /* CLUB LOGO BTN */
-.club-logo-btn{position:absolute;top:8px;left:10px;z-index:50;cursor:pointer;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);padding:4px 10px 4px 5px;border-radius:20px;backdrop-filter:blur(6px);transition:background 0.2s}
+.club-logo-btn{position:absolute;top:6px;left:10px;z-index:50;cursor:pointer;display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);padding:4px 10px 4px 5px;border-radius:20px;backdrop-filter:blur(6px);transition:background 0.2s}
 .club-logo-btn:hover{background:rgba(255,255,255,0.15)}
 .club-logo-img{width:28px;height:28px;object-fit:contain;border-radius:50%}
 .club-logo-ph{width:28px;height:28px;border-radius:50%;background:var(--h1);display:flex;align-items:center;justify-content:center;font-size:13px}
 .club-logo-label{font-size:10px;color:rgba(255,255,255,0.8);letter-spacing:1px;font-weight:600}
 
 /* NAV DOTS + ARROWS at bottom */
-.nav-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;z-index:100;background:rgba(0,0,0,0.55);padding:5px 10px;border-radius:22px;backdrop-filter:blur(8px)}
-.nav-arrow{width:26px;height:26px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;user-select:none;flex-shrink:0}
-.nav-arrow:hover{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.5)}
+.nav-bar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:10px;z-index:100;background:rgba(0,0,0,0.82);padding:9px 14px 12px;backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,0.07)}
+.nav-arrow{width:34px;height:34px;border-radius:50%;background:rgba(220,30,30,0.12);border:2px solid #e53935;color:#e53935;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;user-select:none;flex-shrink:0}
+.nav-arrow:hover{background:rgba(220,30,30,0.3);color:#fff}
 .nav-arrow.hidden{opacity:0;pointer-events:none}
 .nav-dots{display:flex;gap:4px;align-items:center}
 .dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.3s;cursor:pointer}
@@ -56,14 +56,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .color-bar{height:4px;background:linear-gradient(to right,var(--h1) 50%,var(--a1) 50%)}
 
 /* GENERIC PAGE */
-.pg{padding:44px 18px 80px}
+.pg{padding:44px 18px 100px}
 .pg-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;opacity:0.5}
 .pg-subtitle{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-left:4px solid var(--h1);padding-left:10px;margin-bottom:14px}
 .pg-body{font-size:15px;line-height:1.85;opacity:0.9;white-space:pre-wrap}
 
 /* TOC */
-.toc-page{padding:10px 0 80px;min-height:100vh}
-.toc-header{padding:44px 18px 10px}
+.toc-page{padding:10px 0 100px;min-height:100vh}
+.toc-header{padding:50px 18px 10px}
 .toc-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px}
 .toc-subtitle{font-size:10px;letter-spacing:1px;margin-top:1px;opacity:0.5}
 .toc-list{padding:0 10px}
@@ -86,14 +86,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .divider-line{height:1px;background:rgba(128,128,128,0.2);margin:0 16px}
 
 /* STANDINGS */
-.standings-page{padding:44px 0 80px}
+.standings-page{padding:44px 0 100px}
 .standings-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:12px;padding:0 16px}
 .standings-wrap{width:100%;overflow:hidden;background:#fff}
 .standings-wrap iframe{display:block;width:100%;border:none;margin-top:-120px}
 .standings-ph{border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:13px;margin:0 16px;background:rgba(128,128,128,0.1)}
 
 /* ===================== UNIFIED PITCH ===================== */
-.formations-page{padding:8px 8px 80px;min-height:100vh}
+.formations-page{padding:8px 8px 100px;min-height:100vh}
 .form-page-title{font-size:13px;font-weight:700;text-align:center;padding:40px 12px 6px;letter-spacing:1px;opacity:0.8}
 .pitch-full{background:#2e8b45;border:2px solid rgba(255,255,255,0.3);border-radius:0;position:relative;margin:0 4px}
 .pitch-lines{position:absolute;inset:0;pointer-events:none}
@@ -135,13 +135,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .reserves-hdr{padding:44px 16px 10px}
 .reserves-hdr-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px}
 .reserves-body{display:flex;flex:1}
-.res-col{flex:1;padding:12px 10px 80px}
+.res-col{flex:1;padding:12px 10px 100px}
 .res-col.home-col{border-right:2px solid var(--h1)}
 .res-col-title{font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding-bottom:7px;margin-bottom:8px}
 .res-text{font-size:13px;line-height:2;white-space:pre-wrap;opacity:0.85}
 
 /* H2H */
-.h2h-page{padding:44px 16px 80px}
+.h2h-page{padding:44px 16px 100px}
 .h2h-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:16px}
 .h2h-rows{display:flex;flex-direction:column;margin-bottom:18px;border-radius:8px;overflow:hidden;border:1px solid rgba(128,128,128,0.2)}
 .h2h-row{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid rgba(128,128,128,0.15)}
@@ -154,7 +154,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .h2h-video iframe{width:100%;height:100%;border:none}
 
 /* COACHES */
-.coaches-page{padding:44px 16px 80px}
+.coaches-page{padding:44px 16px 100px}
 .coaches-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;margin-bottom:16px}
 .coaches-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
 .coach-card{border:1px solid rgba(128,128,128,0.2);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:14px 10px 12px;background:rgba(128,128,128,0.06)}
@@ -170,7 +170,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .coach-text{font-size:14px;line-height:1.7;opacity:0.85;white-space:pre-wrap}
 
 /* PALMARES */
-.palmares-page{padding:44px 14px 80px}
+.palmares-page{padding:44px 14px 100px}
 .palmares-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:12px}
 .palmares-photo{float:left;width:40%;max-height:64vh;object-fit:cover;object-position:top;border-radius:8px;margin-right:12px;margin-bottom:6px;border:2px solid var(--h1)}
 .palmares-photo-ph{float:left;width:40%;height:40vh;border-radius:8px;margin-right:12px;margin-bottom:6px;border:2px dashed rgba(128,128,128,0.3);display:flex;align-items:center;justify-content:center;font-size:28px}
@@ -178,13 +178,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .palmares-clear{clear:both}
 
 /* AD */
-.ad-page{padding:44px 14px 80px;display:flex;flex-direction:column;min-height:100vh}
+.ad-page{padding:44px 14px 100px;display:flex;flex-direction:column;min-height:100vh}
 .ad-title-txt{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;margin-bottom:14px}
 .ad-content{flex:1;display:flex;align-items:center;justify-content:center}
 .ad-ph{border:1px dashed rgba(128,128,128,0.3);border-radius:8px;height:140px;display:flex;align-items:center;justify-content:center;font-size:13px;width:100%;opacity:0.5}
 
 /* VOTE */
-.vote-page{padding:44px 14px 80px}
+.vote-page{padding:44px 14px 100px}
 .vote-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;margin-bottom:2px}
 .vote-sub{font-size:11px;margin-bottom:14px;opacity:0.6}
 .vote-closed-banner{background:linear-gradient(135deg,var(--h1),var(--h3));border-radius:10px;padding:14px;text-align:center;margin-bottom:14px}
@@ -211,14 +211,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .vote-notify-btn.active{background:rgba(0,230,118,0.08);border-color:#00e676;color:#00e676}
 
 /* PROMO */
-.promo-page{padding:44px 14px 80px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.promo-page{padding:44px 14px 100px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .promo-ph{border:1px dashed rgba(128,128,128,0.3);border-radius:8px;height:160px;display:flex;align-items:center;justify-content:center;font-size:13px;width:100%;opacity:0.5}
 
 /* PROGRAM */
 .program-page{padding:44px 0 0}
 .prog-photo{width:100%;height:33vh;object-fit:cover;display:block}
 .prog-photo-ph{width:100%;height:33vh;display:flex;align-items:center;justify-content:center;font-size:13px;opacity:0.4}
-.prog-content{padding:16px 16px 80px}
+.prog-content{padding:16px 16px 100px}
 .prog-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;margin-bottom:10px}
 .prog-text{font-size:15px;line-height:1.8;opacity:0.85;white-space:pre-wrap}
 </style>
@@ -285,7 +285,7 @@ function clubBtn(pg){
 <div class="page" data-page="2" style="background:<%=pbg(2)%>;color:<%=pfg(2)%>">
   <%- clubBtn(2) %>
   <div class="toc-page">
-    <div class="toc-header"><div class="toc-title">CUPRINS</div><div class="toc-subtitle">Apasă pentru a naviga direct</div></div>
+    <div class="toc-header"><div class="toc-title">🏠 CUPRINS</div><div class="toc-subtitle">Apasă pentru a naviga direct</div></div>
     <div class="toc-list">
       <% tocItems.forEach(function(item,i){ const pg=tocPages[i]; const fp=Array.isArray(pg)?pg[0]:pg; const lp=Array.isArray(pg)?pg[pg.length-1]:pg; %>
       <div class="toc-item" id="toc-<%=i%>" onclick="goToPage(<%=fp%>)" style="color:<%=pfg(2)%>">
@@ -369,8 +369,8 @@ function clubBtn(pg){
     const aRows=getRows(mag.awayFormation);
     // Home: GK first (top), then defenders, mids, forwards toward center
     const hRev=[...hRows].reverse(); // reversed: GK row last displayed = top of pitch
-    // Away: forwards toward center (top of away half), GK at bottom
-    const aFwd=[...aRows]; // normal order: first row = GK at bottom
+    // Away: attackers at top (near center), GK at bottom
+    const aFwd=[...aRows].reverse(); // reversed: attackers first displayed = near center
     %>
     <div class="pitch-full">
       <!-- Pitch lines overlay -->
@@ -418,7 +418,7 @@ function clubBtn(pg){
           <% row.forEach(function(s){
             const num=(mag.awayPlayerNumbers&&mag.awayPlayerNumbers[ai])?mag.awayPlayerNumbers[ai]:s;
             const name=(mag.awayPlayerNames&&mag.awayPlayerNames[ai])?mag.awayPlayerNames[ai]:'';
-            const isGK=(ri===0);
+            const isGK=(ri===aFwd.length-1);
             const sc=isGK?'#aed6f1':aSC; const cc=isGK?'#27ae60':aCC; const nc=isGK?'#333':aNC;
             ai++;
           %>
@@ -601,18 +601,7 @@ let voteNotifyOn=localStorage.getItem('vnotify_'+MAG_ID)==='1';
 let formNotifyOn=localStorage.getItem('fnotify_'+MAG_ID)==='1';
 const mag=document.getElementById('magazine');
 
-function playRustle(){
-  try{
-    const ctx=new(window.AudioContext||window.webkitAudioContext)();
-    const buf=ctx.createBuffer(1,ctx.sampleRate*0.12,ctx.sampleRate);
-    const d=buf.getChannelData(0);
-    for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1)*Math.exp(-i/(ctx.sampleRate*0.04));
-    const src=ctx.createBufferSource();src.buffer=buf;
-    const g=ctx.createGain();g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.12);
-    const f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=2800;f.Q.value=0.6;
-    src.connect(f);f.connect(g);g.connect(ctx.destination);src.start();
-  }catch(e){}
-}
+function playRustle(){}
 
 mag.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;drag=true},{passive:true});
 mag.addEventListener('touchend',e=>{
