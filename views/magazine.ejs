@@ -123,6 +123,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .pitch-team-name{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.7);flex:1}
 .pitch-team-formation{font-size:9px;color:rgba(255,255,255,0.6);letter-spacing:1px}
 .pitch-coach-box{font-size:9px;color:rgba(255,255,255,0.7);padding:0 8px 3px;font-style:italic}
+.coach-outside{font-size:11px;font-style:italic;padding:3px 8px;opacity:0.75;letter-spacing:0.3px}
 .pitch-divider{height:1px;background:rgba(255,255,255,0.3);margin:2px 6px}
 
 /* Notification btn */
@@ -372,6 +373,7 @@ function clubBtn(pg){
     // Away: attackers at top (near center), GK at bottom
     const aFwd=[...aRows].reverse(); // reversed: attackers first displayed = near center
     %>
+    <%if(mag.homeCoachFormation){%><div class="coach-outside" style="color:<%=pfg(8)%>">🎽 Antrenor: <%=mag.homeCoachFormation%></div><%}%>
     <div class="pitch-full">
       <!-- Pitch lines overlay -->
       <div class="pitch-lines">
@@ -389,7 +391,6 @@ function clubBtn(pg){
         <div class="pitch-team-name"><%=mag.homeFormationTitle||mag.homeTeam%></div>
         <div class="pitch-team-formation"><%=mag.homeFormation%></div>
       </div>
-      <%if(mag.homeCoachFormation){%><div class="pitch-coach-box">Antrenor: <%=mag.homeCoachFormation%></div><%}%>
       <div class="pitch-half">
         <% let hi=0; hRev.forEach(function(row, ri){ %>
         <div class="pitch-row">
@@ -430,13 +431,13 @@ function clubBtn(pg){
         </div>
         <% }) %>
       </div>
-      <%if(mag.awayCoachFormation){%><div class="pitch-coach-box">Antrenor: <%=mag.awayCoachFormation%></div><%}%>
       <div class="pitch-team-header">
         <%if(mag.awayLogoPhoto){%><img src="<%=mag.awayLogoPhoto%>" class="pitch-team-logo"><%}else{%><div class="pitch-team-logo-ph">🟢</div><%}%>
         <div class="pitch-team-name"><%=mag.awayFormationTitle||mag.awayTeam%></div>
         <div class="pitch-team-formation"><%=mag.awayFormation%></div>
       </div>
     </div>
+    <%if(mag.awayCoachFormation){%><div class="coach-outside" style="color:<%=pfg(8)%>">🎽 Antrenor: <%=mag.awayCoachFormation%></div><%}%>
     <button class="notify-btn" id="formNotifyBtn" onclick="toggleFormNotify()">🔔 Activează notificare formații de start</button>
   </div>
 </div>
