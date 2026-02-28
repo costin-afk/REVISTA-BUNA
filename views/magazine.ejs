@@ -414,14 +414,16 @@ function clubBtn(pg){
 
       <!-- AWAY TEAM (bottom half) -->
       <div class="pitch-half">
-        <% let ai=0; aFwd.forEach(function(row, ri){ %>
+        <% // Away indices run in reverse: attackers (high index) shown first, GK (index 0) shown last
+        const awayTotal=aFwd.reduce((s,r)=>s+r.length,0);
+        let ai=awayTotal-1; aFwd.forEach(function(row, ri){ %>
         <div class="pitch-row">
           <% row.forEach(function(s){
             const num=(mag.awayPlayerNumbers&&mag.awayPlayerNumbers[ai])?mag.awayPlayerNumbers[ai]:s;
             const name=(mag.awayPlayerNames&&mag.awayPlayerNames[ai])?mag.awayPlayerNames[ai]:'';
             const isGK=(ri===aFwd.length-1);
             const sc=isGK?'#aed6f1':aSC; const cc=isGK?'#27ae60':aCC; const nc=isGK?'#333':aNC;
-            ai++;
+            ai--;
           %>
           <div class="player-token">
             <%- shirtSVG(sc, cc, nc, num) %>
