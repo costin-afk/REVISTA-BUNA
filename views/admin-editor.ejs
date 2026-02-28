@@ -555,7 +555,7 @@ function renderPitch(team){
   const rows=FORMATIONS[f]||FORMATIONS['4-3-3'];
   const d=team==='home'?hD:aD;
   const col=team==='home'?'#c0392b':'#27ae60';
-  const rev=[...rows].reverse();
+  const rev=[...rows]; // same order as magazine: GK first = top
   let idx=0,html=`<div class="pitch-a ${team==='home'?'home-pa':'away-pa'}">`;
   rev.forEach(row=>{
     html+=`<div class="prow">`;
