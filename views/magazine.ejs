@@ -105,11 +105,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#0d0d0d;font-family:
 .pitch-box-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:52%;height:14%;border:1px solid rgba(255,255,255,0.3);border-top:none}
 .pitch-box-bot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:52%;height:14%;border:1px solid rgba(255,255,255,0.3);border-bottom:none}
 /* goal areas */
-.pitch-goal-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:24%;height:5%;border:1px solid rgba(255,255,255,0.25);border-top:none}
-.pitch-goal-bot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:24%;height:5%;border:1px solid rgba(255,255,255,0.25);border-bottom:none}
+.pitch-goal-top{position:absolute;top:0;left:50%;transform:translateX(-50%);width:18%;height:4%;border:1px solid rgba(255,255,255,0.3);border-top:none}
+.pitch-goal-bot{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:18%;height:4%;border:1px solid rgba(255,255,255,0.3);border-bottom:none}
 
-.pitch-half{padding:6px 2px;position:relative;z-index:2}
-.pitch-row{display:flex;justify-content:space-around;margin-bottom:3px}
+.pitch-half{padding:4px 2px;position:relative;z-index:2}
+.pitch-row{display:flex;justify-content:space-around;margin-bottom:5px}
 .player-token{display:flex;flex-direction:column;align-items:center;gap:1px}
 .shirt-wrap{position:relative;width:30px;height:34px}
 .shirt-wrap svg{width:100%;height:100%}
@@ -368,7 +368,7 @@ function clubBtn(pg){
     const hRows=getRows(mag.homeFormation);
     const aRows=getRows(mag.awayFormation);
     // Home: GK first (top), then defenders, mids, forwards toward center
-    const hRev=[...hRows].reverse(); // reversed: GK row last displayed = top of pitch
+    const hRev=[...hRows]; // normal order: GK first = displayed first = top of pitch
     // Away: attackers at top (near center), GK at bottom
     const aFwd=[...aRows].reverse(); // reversed: attackers first displayed = near center
     %>
@@ -396,7 +396,7 @@ function clubBtn(pg){
           <% row.forEach(function(s){
             const num=(mag.homePlayerNumbers&&mag.homePlayerNumbers[hi])?mag.homePlayerNumbers[hi]:s;
             const name=(mag.homePlayerNames&&mag.homePlayerNames[hi])?mag.homePlayerNames[hi]:'';
-            const isGK=(ri===hRev.length-1);
+            const isGK=(ri===0);
             const sc=isGK?'#f9e79f':hSC; const cc=isGK?'#c8a000':hCC; const nc=isGK?'#333':hNC;
             hi++;
           %>
